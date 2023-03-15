@@ -17,7 +17,7 @@ const memberSchema = new mongoose.Schema({
     type: String,
   },
   relationship: {
-    parent: [],
+    parent: [], // array of member_id
     children: [],
     sibling: [],
     spouse: [],
