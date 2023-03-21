@@ -1,7 +1,7 @@
 .container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
   height: 100vh;
 }
 
@@ -14,7 +14,28 @@
   background-color: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-
+.remember {
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.forgot {
+  display: block;
+  margin-top: 1rem;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #0070f3;
+  text-decoration: none;
+}
+.registerLink {
+  display: block;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #0070f3;
+  text-decoration: none;
+}
 .form h1 {
   font-size: 2rem;
   margin-bottom: 1rem;

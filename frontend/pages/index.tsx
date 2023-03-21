@@ -22,8 +22,16 @@ const Login = () => {
             <span className={styles.password}>Password:</span>
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
           </label>
+          <label>
+            <input type="checkbox" />
+            <span className={styles.remember}>Remember me</span>
+          </label>
+          <label>
+            <a className={styles.forgot} href="/forgot">Forgot password?</a>
+          </label>
           <button type="submit">Login</button>
-        </form>
+          <a className={styles.registerLink}href="/register">Dont have an account? Register here!</a>
+          </form>
       </div>
     </div>
   );
