@@ -8,6 +8,7 @@ const Member = require("./models/member");
 dbConnect();
 
 const addMember = require("./controllers/addmember");
+const showTree = require("./controllers/showtree");
 
 // const user = new User({
 
@@ -47,6 +48,10 @@ const addMember = require("./controllers/addmember");
 //   });
 
 app.post("/addmember", addMember);
+app.get("/showtree/parent", showTree.parent);
+app.get("/showtree/children", showTree.children);
+app.get("/showtree/spouse", showTree.spouse);
+app.get("/showtree/sibling", showTree.sibling);
 
 const PORT = 3001;
 app.listen(PORT, () => {
