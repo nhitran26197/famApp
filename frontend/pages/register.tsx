@@ -47,7 +47,7 @@ const routeToLogin = () => {
                     <input placeholder="Your Age" type="text" value={age} onChange={(e) => setAge(e.target.value)} />
                 </label>
                 <button className={styles.button} type="submit">Register</button>
-                <a className={styles.loginLink} href="/login">Already have an account? Login here!</a>
+                <a className={styles.loginLink} href="/">Already have an account? Login here!</a>
             </form>
 
             </div>
