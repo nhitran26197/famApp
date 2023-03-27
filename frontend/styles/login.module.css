@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  height: 100vh;
+}
+
+.form {
+  max-width: 400px;
+  width: 100%;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.remember {
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.forgot {
+  display: block;
+  margin-top: 1rem;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #0070f3;
+  text-decoration: none;
+}
+.registerLink {
+  display: block;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #0070f3;
+  text-decoration: none;
+}
+.form h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font: 700 2rem/1.5 'Inter', bush-script, sans-s;
+  color: #0070f3;
+}
+
+.form label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form input[type='text'],
+.form input[type='password'] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  background-color: #f8f8f8;
+}
+
+.form button[type='submit'] {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #0070f3;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.form button[type='submit']:hover {
+  background-color: #0962c9;
+}
+
+.form span {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-family: bush-script, sans-s;
+  color: #0070f3;
+}
