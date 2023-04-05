@@ -1,6 +1,9 @@
 const dbConnect = require("./controllers/connectMongoDb");
 const User = require("./models/user");
 const Member = require("./models/member");
+const signUp = require("./controllers/signup");
+const login = require("./controllers/login");
+const forgotpw = require("./controllers/forgotpw");
 dbConnect();
 
 // const user = new User({
@@ -41,3 +44,6 @@ dbConnect();
 //   .catch((error) => {
 //     console.log("not saved ");
 //   });
+app.post("/signup", signUp);
+app.post("/login", login);
+app.post("/forgotpw", forgotpw);
