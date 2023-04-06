@@ -13,7 +13,7 @@ const Register = () => {
     const [age, setAge] = useState("");
 
 const routeToLogin = () => {
-    router.push("/");
+    router.push("/login");
 }
 
 

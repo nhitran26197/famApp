@@ -10,12 +10,13 @@ const Login = () => {
   const router = useRouter();
   const routeToLogin = () => {
     router.push("/login");
-}
+  };
+
 
   return (
     <div className={styles.container}>
       <div className={styles.form}>
-    <button type="submit">Go to Login Page</button>
+      <button className={styles.button} onClick={routeToLogin}>Go to Login Page </button>
     </div>
     </div>
   );
