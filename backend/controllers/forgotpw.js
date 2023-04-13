@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const sendEmail = require('../utils/sendEmail');
+const sendEmailMaybe = require('./sendEmailMaybe');
 
 const forgotPassword = (req, res) => {
     const email = req.body.email;
@@ -12,7 +14,8 @@ const forgotPassword = (req, res) => {
         }
         else {
             //send the actual email and use nodemailer
-
+            sendEmailMaybe();
+            sendEmail();
 
             res.json({message: "Email sent succesfully!"})
         }

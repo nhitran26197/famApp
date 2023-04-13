@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+//const Joi = require("joi");
 const postSchema = new mongoose.Schema({
   post_id: {
     type: Number,
@@ -45,3 +46,19 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
+//need to verify that this would work with our current schema and verify how to seperate the post schema from the user schema
+
+/*
+const User = mongoose.model("user", userSchema);
+
+const validate = (user) => {
+    const schema = Joi.object({
+        name: Joi.string().required(),
+        email: Joi.string().email().required(),
+        password: Joi.string().required(),
+    });
+    return schema.validate(user);
+};
+
+module.exports = { User, validate };
+*/
