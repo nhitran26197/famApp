@@ -1,18 +1,10 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-  },
-  password: {
-    type: String,
-  },
-  email: {
-    type: String,
-  },
-  bucket_list: {
-    type: String,
-  },
+  username: String,
+  password: String,
+  email: String,
+  bucket_list: String,
   post: [],
   member_id: {
     type: Number,

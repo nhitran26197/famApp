@@ -9,15 +9,14 @@ const dbConnect = require("./controllers/connectMongoDb");
 const User = require("./models/user");
 const Member = require("./models/member");
 dbConnect();
-
 // const addMember = require("./controllers/addmember");
 // const showTree = require("./controllers/showtree");
 // const posting = require("./controllers/posting");
-// const { profilePost, profileGet } = require("./controllers/profile");
+const { profilePost, profileGet } = require("./controllers/profile");
 // const { travelPost, eventPost } = require("./controllers/feedpage");
 // const imageController = require("./controllers/convertURL");
-const getTree = require("./controllers/getTree");
-const login = require("./controllers/login");
+//const getTree = require("./controllers/getTree");
+const {login, users} = require("./controllers/login");
 
 // const s3 = new AWS.S3({
 //   accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID,
@@ -70,21 +69,31 @@ const login = require("./controllers/login");
 //     console.log("not saved ");
 //   });
 
+app.get('/tshirt', (req, res) => {
+  res.status(200).send({
+    shirt: 'ligma balls',
+    size: 'large'
+  })
+});
+
+
 app.post("/login", login);
+app.get("/user", users);
 //app.post("/addmember", addMember);
 // app.get("/showtree/parent", showTree.parent);
 // app.get("/showtree/children", showTree.children);
 // app.get("/showtree/spouse", showTree.spouse);
 // app.get("/showtree/sibling", showTree.sibling);
 // app.post("/posting", posting);
-// app.post("/profile", profilePost);
+app.post("/profile", profilePost);
 // app.post("/profileget", profileGet);
 // app.post("/feedpage/travel", travelPost);
 // app.post("/feedpage/event", eventPost);
 // app.use("/image", imageController);
 //app.use("/getTree", getTree);
-
+console.dir(app.path());
 const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`listening to port${PORT}`);
 });
+

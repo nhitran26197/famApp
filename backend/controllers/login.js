@@ -1,21 +1,39 @@
 //import schemas of the user and members
 const User = require('../models/user');
 
-const login = (req, res) => {
-    //user input
-    const { username, password } = req.body;
-    User.findOne({ username: username }, (err, userData) => {
+const users = (req, res) => {
+    User.find({}, (err, userData) => {
         if (err) {
             console.log(err);
             res.status(500).send();
+            return
         }
+        res.json(userData);
+    });
+}
+
+
+const login = (req, res) => {
+    //user input
+    const { username, password } = req.body;
+    console.log(username);
+    User.findOne({username: "froppyboppy" }, (err, userData) => {
+        console.log("ligma");
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+            return
+        }
+        console.log("fugma");
         if (userData) {
+        console.log(userData);
             if (userData.password === password) {
-                res.json({messade: "login successful"});
-         
-   }
+                console.log("login successful");
+                res.json({message: "login successful"});
+            }
             else {
-                res.json({messade: "nope you stupid bitch"});
+                console.log("DIEEEE");
+                res.json({message: "nope you stupid bitch"});
             }
         }
     }
@@ -24,4 +42,4 @@ const login = (req, res) => {
 
 
 
-module.exports = login;
+module.exports = {login, users};
