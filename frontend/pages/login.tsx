@@ -53,10 +53,10 @@ const Login = () => {
             <span className={styles.remember}>Remember me</span>
           </label>
           <label>
-            <Link href="/forgot"><a className={styles.forgot}>Forgot Password?</a></Link>
+            <Link className={styles.forgot} href="/forgot">Forgot Password?</Link>
           </label>
           <button type="submit">Login</button>
-          <Link href="/register"><a className={styles.link}>Sign Up</a></Link>
+          <Link className={styles.link} href="/register">Sign Up</Link>
           </form>
       </div>
       <div>

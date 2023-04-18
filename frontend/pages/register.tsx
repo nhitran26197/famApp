@@ -16,7 +16,6 @@ const routeToLogin = () => {
     router.push("/login");
 }
 
-
     return(
         <div className={styles.container}>
             <div className={styles.form}>
@@ -47,7 +46,7 @@ const routeToLogin = () => {
                     <input placeholder="Your Age" type="text" value={age} onChange={(e) => setAge(e.target.value)} />
                 </label>
                 <button className={styles.button} type="submit">Register</button>
-                <Link href="/login"><a className={styles.link}>Already have an account? Login here!</a></Link>
+                <Link className={styles.link} href="/login">Already have an account? Login here!</Link>
             </form>
 
             </div>

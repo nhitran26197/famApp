@@ -21,7 +21,7 @@ const Forgot = () => {
                       <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
                   </label>
                   <button className={styles.button} type="submit">Reset Password</button>
-                  <Link href="/login"><a className={styles.link}>Login</a></Link>
+                  <Link className={styles.link} href="/login">Login</Link>
               </form>
   
               </div>
