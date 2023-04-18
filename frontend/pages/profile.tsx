@@ -13,7 +13,7 @@
   ```
 */
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
-import NavBar from "./navbar";
+import NavBar from "../components/navbar";
 
 export default function Profile() {
   return (
