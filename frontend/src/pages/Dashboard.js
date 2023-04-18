@@ -18,7 +18,10 @@ export default function Dashboard() {
       </div>
       <div className="flex flex-row">
         <div className="w-6/12">
-            <Tree />
+          <div className="flex justify-center">
+            <h1 className=" text-2xl font-bold">Family Tree</h1>
+          </div>
+          <Tree />
         </div>
         <div>
           <Wrapper apiKey={"AIzaSyCecWQ01w2hL3sX2XNdjBVsL0KA9Yln4Hs"}>

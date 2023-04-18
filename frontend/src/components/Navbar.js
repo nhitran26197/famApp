@@ -13,7 +13,7 @@ const navigation = [
   { name: "Travel", href: "#", current: false },
   { name: "Story", href: "#", current: false },
   { name: "Friend", href: "#", current: false },
-  { name: "Profile", href: "#", current: false },
+  { name: "Profile", href: "/profile", current: false },
 ];
 const userNavigation = [
   { name: "Your Profile", href: "#" },
