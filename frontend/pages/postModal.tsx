@@ -22,6 +22,7 @@ function PostPop() {
         backdrop="static"
         keyboard={false}
         size="lg"
+        git
         centered={true}
       >
         <Modal.Header closeButton>
