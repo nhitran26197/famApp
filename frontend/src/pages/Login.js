@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import styles from '../styles/login.module.css';
-import { useRouter } from 'next/router'
-import Link from 'next/link';
+import styles from '../css/login.module.css';
+import { Link, useNavigate} from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const router = useRouter();
+  let navigate = useNavigate();
   const handleLogin = () => {
   
     if (username === '' && password === '') {
@@ -14,24 +13,25 @@ const Login = () => {
     }
     if (username !== '' && password !== '') {
 
-      fetch('http://localhost:8000/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username,
-          password,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.error) {
-            alert(data.error);
-          } else {
-            router.push('/navbar');
-          }
-        });
+      // fetch('http://localhost:8000/login', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({
+      //     username,
+      //     password,
+      //   }),
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => {
+      //     if (data.error) {
+      //       alert(data.error);
+      //     } else {
+      //       navigate('/dashboard');
+      //     }
+      //   });
+      navigate('/dashboard');
     }
   };
 
@@ -49,14 +49,10 @@ const Login = () => {
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
           </label>
           <label>
-            <input type="checkbox" />
-            <span className={styles.remember}>Remember me</span>
-          </label>
-          <label>
-            <Link className={styles.forgot} href="/forgot">Forgot Password?</Link>
+            <Link className={styles.forgot} to="/forgot">Forgot Password?</Link>
           </label>
           <button type="submit">Login</button>
-          <Link className={styles.link} href="/register">Sign Up</Link>
+          <Link className={styles.link} to="/register">Sign Up</Link>
           </form>
       </div>
       <div>
