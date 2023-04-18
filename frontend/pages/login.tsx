@@ -1,22 +1,36 @@
 import React, { useState } from 'react';
 import styles from '../styles/login.module.css';
+import { useRouter } from 'next/router'
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  const router = useRouter();
   const handleLogin = () => {
-    // Perform login logic here
-    //if no username and password, return error
-    //if username and password, return success
+  
     if (username === '' && password === '') {
       alert('Please enter a username and password');
     }
     if (username !== '' && password !== '') {
-      //check if username and password are correct
-      //if correct, redirect to dashboard
-      //if incorrect, return error
-      
+
+      fetch('http://localhost:8000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username,
+          password,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.error) {
+            alert(data.error);
+          } else {
+            router.push('/navbar');
+          }
+        });
     }
   };
 
@@ -43,6 +57,9 @@ const Login = () => {
           <button type="submit">Login</button>
           <a className={styles.registerLink}href="/register">Dont have an account? Register here!</a>
           </form>
+      </div>
+      <div>
+        <img className={styles.heroimage} src="https://svgshare.com/i/sEE.svg" alt="asdf"/>
       </div>
     </div>
   );
