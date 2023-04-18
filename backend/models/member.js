@@ -16,12 +16,11 @@ const memberSchema = new mongoose.Schema({
   account: {
     type: String,
   },
-  relationship: {
-    parent: [], // array of member_id
-    children: [],
-    sibling: [],
-    spouse: [],
-  },
+
+  parent: [Number], // array of member_id
+  children: [Number],
+  sibling: [Number],
+  spouse: [Number],
 });
 
 const Member = mongoose.model("Member", memberSchema);

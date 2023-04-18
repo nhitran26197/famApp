@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
-const AWS = require("aws-sdk");
-const multer = require("multer");
-const multerS3 = require("multer-s3");
+// const AWS = require("aws-sdk");
+// const multer = require("multer");
+// const multerS3 = require("multer-s3");
 app.use(express.json());
 
 const dbConnect = require("./controllers/connectMongoDb");
@@ -15,27 +15,27 @@ const showTree = require("./controllers/showtree");
 const posting = require("./controllers/posting");
 const { profilePost, profileGet } = require("./controllers/profile");
 const { travelPost, eventPost } = require("./controllers/feedpage");
-const imageController = require("./controllers/convertURL");
+//const imageController = require("./controllers/convertURL");
 const getTree = require("./controllers/getTree");
 
-const s3 = new AWS.S3({
-  accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_S3_SECRET_ACCESS_KEY,
-});
+// const s3 = new AWS.S3({
+//   accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID,
+//   secretAccessKey: process.env.AWS_S3_SECRET_ACCESS_KEY,
+// });
 
-const upload = multer({
-  storage: multerS3({
-    s3: s3,
-    bucket: process.env.AWS_S3_BUCKET_NAME,
-    acl: "public-read",
-    metadata: (req, file, cb) => {
-      cb(null, { fieldName: file.fieldname });
-    },
-    key: (req, file, cb) => {
-      cb(null, Date.now().toString());
-    },
-  }),
-});
+// const upload = multer({
+//   storage: multerS3({
+//     s3: s3,
+//     bucket: process.env.AWS_S3_BUCKET_NAME,
+//     acl: "public-read",
+//     metadata: (req, file, cb) => {
+//       cb(null, { fieldName: file.fieldname });
+//     },
+//     key: (req, file, cb) => {
+//       cb(null, Date.now().toString());
+//     },
+//   }),
+// });
 
 // const user = new User({
 //   username: "nhitran",
@@ -45,10 +45,10 @@ const upload = multer({
 // });
 
 // const member = new Member({
-//   member_id: 1,
-//   name: "Nhi Tran",
-//   age: 26,
-//   account: "nhitran",
+//   member_id: "2",
+//   name: "Mike",
+//   age: 35,
+//   account: "Mike1234",
 // });
 
 // user
@@ -79,7 +79,7 @@ app.post("/profile", profilePost);
 app.post("/profileget", profileGet);
 app.post("/feedpage/travel", travelPost);
 app.post("/feedpage/event", eventPost);
-app.use("/image", imageController);
+//app.use("/image", imageController);
 app.get("/getTree", getTree);
 
 const PORT = 3001;
