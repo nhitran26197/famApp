@@ -16,6 +16,7 @@ const posting = require("./controllers/posting");
 const { profilePost, profileGet } = require("./controllers/profile");
 const { travelPost, eventPost } = require("./controllers/feedpage");
 const imageController = require("./controllers/convertURL");
+const getTree = require("./controllers/getTree");
 
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID,
@@ -79,6 +80,7 @@ app.post("/profileget", profileGet);
 app.post("/feedpage/travel", travelPost);
 app.post("/feedpage/event", eventPost);
 app.use("/image", imageController);
+app.get("/getTree", getTree);
 
 const PORT = 3001;
 app.listen(PORT, () => {

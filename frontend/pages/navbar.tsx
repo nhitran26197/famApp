@@ -20,7 +20,7 @@ const userNavigation = [
   { name: "Settings", href: "#" },
   { name: "Sign out", href: "#" },
 ];
-
+//@ts-ignore
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
