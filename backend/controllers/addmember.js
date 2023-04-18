@@ -45,7 +45,7 @@ const addMember = (req, res) => {
     let parent = [];
     Member.findOne({ member_id: node_member_id })
       .then((result) => {
-        parent = result.relationship.parent.slice();
+        parent = result.parent.slice();
         console.log(parent.length);
         return parent;
       })
@@ -55,7 +55,7 @@ const addMember = (req, res) => {
           for (let i = 0; i < parent.length; i++) {
             Member.findOneAndUpdate(
               { member_id: parent[i] },
-              { $push: { "relationship.spouse": member_id } },
+              { $push: { spouse: member_id } },
               { new: true }
             )
               .then((updatedMember) => {
@@ -64,7 +64,7 @@ const addMember = (req, res) => {
               .catch((err) => console.error(err));
             Member.findOneAndUpdate(
               { member_id: member_id },
-              { $push: { "relationship.spouse": parent[i] } },
+              { $push: { spouse: parent[i] } },
               { new: true }
             )
               .then((updatedMember) => {
@@ -78,7 +78,7 @@ const addMember = (req, res) => {
     let sibling = [];
     Member.findOne({ member_id: node_member_id })
       .then((result) => {
-        sibling = result.relationship.sibling.slice();
+        sibling = result.sibling.slice();
         console.log(sibling);
         return sibling;
       })
@@ -87,7 +87,7 @@ const addMember = (req, res) => {
           for (let i = 0; i < sibling.length; i++) {
             Member.findOneAndUpdate(
               { member_id: sibling[i] },
-              { $push: { "relationship.parent": member_id } },
+              { $push: { parent: member_id } },
               { new: true }
             )
               .then((updatedMember) => {
@@ -96,7 +96,7 @@ const addMember = (req, res) => {
               .catch((err) => console.error(err));
             Member.findOneAndUpdate(
               { member_id: member_id },
-              { $push: { "relationship.children": sibling[i] } },
+              { $push: { children: sibling[i] } },
               { new: true }
             )
               .then((updatedMember) => {
@@ -110,7 +110,7 @@ const addMember = (req, res) => {
     //update parent in child data
     Member.findOneAndUpdate(
       { member_id: node_member_id },
-      { $push: { "relationship.parent": member_id } },
+      { $push: { parent: member_id } },
       { new: true }
     )
       .then((updatedMember) => {
@@ -121,7 +121,7 @@ const addMember = (req, res) => {
     //update child in the parent data
     Member.findOneAndUpdate(
       { member_id: member_id },
-      { $push: { "relationship.children": node_member_id } },
+      { $push: { children: node_member_id } },
       { new: true }
     )
       .then((updatedMember) => {
@@ -137,7 +137,7 @@ const addMember = (req, res) => {
     let spouse = [];
     Member.findOne({ member_id: node_member_id })
       .then((result) => {
-        spouse = result.relationship.spouse.slice();
+        spouse = result.spouse.slice();
         console.log(spouse.length);
         return spouse;
       })
@@ -147,7 +147,7 @@ const addMember = (req, res) => {
           for (let i = 0; i < spouse.length; i++) {
             Member.findOneAndUpdate(
               { member_id: spouse[i] },
-              { $push: { "relationship.children": member_id } },
+              { $push: { children: member_id } },
               { new: true }
             )
               .then((updatedMember) => {
@@ -156,7 +156,7 @@ const addMember = (req, res) => {
               .catch((err) => console.error(err));
             Member.findOneAndUpdate(
               { member_id: member_id },
-              { $push: { "relationship.parent": spouse[i] } },
+              { $push: { parent: spouse[i] } },
               { new: true }
             )
               .then((updatedMember) => {
@@ -170,7 +170,7 @@ const addMember = (req, res) => {
     let children = [];
     Member.findOne({ member_id: node_member_id })
       .then((result) => {
-        children = result.relationship.children.slice();
+        children = result.children.slice();
         console.log(children);
         return children;
       })
@@ -179,7 +179,7 @@ const addMember = (req, res) => {
           for (let i = 0; i < children.length; i++) {
             Member.findOneAndUpdate(
               { member_id: children[i] },
-              { $push: { "relationship.sibling": member_id } },
+              { $push: { sibling: member_id } },
               { new: true }
             )
               .then((updatedMember) => {
@@ -188,7 +188,7 @@ const addMember = (req, res) => {
               .catch((err) => console.error(err));
             Member.findOneAndUpdate(
               { member_id: member_id },
-              { $push: { "relationship.sibling": children[i] } },
+              { $push: { sibling: children[i] } },
               { new: true }
             )
               .then((updatedMember) => {
@@ -202,7 +202,7 @@ const addMember = (req, res) => {
     //update parent in child data
     Member.findOneAndUpdate(
       { member_id: node_member_id },
-      { $push: { "relationship.children": member_id } },
+      { $push: { children: member_id } },
       { new: true }
     )
       .then((updatedMember) => {
@@ -213,7 +213,7 @@ const addMember = (req, res) => {
     //update child in the parent data
     Member.findOneAndUpdate(
       { member_id: member_id },
-      { $push: { "relationship.parent": node_member_id } },
+      { $push: { parent: node_member_id } },
       { new: true }
     )
       .then((updatedMember) => {
@@ -229,7 +229,7 @@ const addMember = (req, res) => {
     let parent = [];
     Member.findOne({ member_id: node_member_id })
       .then((result) => {
-        parent = result.relationship.parent.slice();
+        parent = result.parent.slice();
         console.log(parent.length);
         return parent;
       })
@@ -239,7 +239,7 @@ const addMember = (req, res) => {
           for (let i = 0; i < parent.length; i++) {
             Member.findOneAndUpdate(
               { member_id: parent[i] },
-              { $push: { "relationship.children": member_id } },
+              { $push: { children: member_id } },
               { new: true }
             )
               .then((updatedMember) => {
@@ -248,7 +248,7 @@ const addMember = (req, res) => {
               .catch((err) => console.error(err));
             Member.findOneAndUpdate(
               { member_id: member_id },
-              { $push: { "relationship.parent": parent[i] } },
+              { $push: { parent: parent[i] } },
               { new: true }
             )
               .then((updatedMember) => {
@@ -262,7 +262,7 @@ const addMember = (req, res) => {
     let sibling = [];
     Member.findOne({ member_id: node_member_id })
       .then((result) => {
-        sibling = result.relationship.sibling.slice();
+        sibling = result.sibling.slice();
         console.log(sibling);
         return sibling;
       })
@@ -271,7 +271,7 @@ const addMember = (req, res) => {
           for (let i = 0; i < sibling.length; i++) {
             Member.findOneAndUpdate(
               { member_id: sibling[i] },
-              { $push: { "relationship.sibling": member_id } },
+              { $push: { sibling: member_id } },
               { new: true }
             )
               .then((updatedMember) => {
@@ -280,7 +280,7 @@ const addMember = (req, res) => {
               .catch((err) => console.error(err));
             Member.findOneAndUpdate(
               { member_id: member_id },
-              { $push: { "relationship.sibling": sibling[i] } },
+              { $push: { sibling: sibling[i] } },
               { new: true }
             )
               .then((updatedMember) => {
@@ -294,7 +294,7 @@ const addMember = (req, res) => {
     //update parent in child data
     Member.findOneAndUpdate(
       { member_id: node_member_id },
-      { $push: { "relationship.sibling": member_id } },
+      { $push: { sibling: member_id } },
       { new: true }
     )
       .then((updatedMember) => {
@@ -305,7 +305,7 @@ const addMember = (req, res) => {
     //update child in the parent data
     Member.findOneAndUpdate(
       { member_id: member_id },
-      { $push: { "relationship.sibling": node_member_id } },
+      { $push: { sibling: node_member_id } },
       { new: true }
     )
       .then((updatedMember) => {
@@ -329,7 +329,7 @@ const addMember = (req, res) => {
           for (let i = 0; i < children.length; i++) {
             Member.findOneAndUpdate(
               { member_id: children[i] },
-              { $push: { "relationship.parent": member_id } },
+              { $push: { parent: member_id } },
               { new: true }
             )
               .then((updatedMember) => {
@@ -338,7 +338,7 @@ const addMember = (req, res) => {
               .catch((err) => console.error(err));
             Member.findOneAndUpdate(
               { member_id: member_id },
-              { $push: { "relationship.children": children[i] } },
+              { $push: { children: children[i] } },
               { new: true }
             )
               .then((updatedMember) => {
@@ -352,7 +352,7 @@ const addMember = (req, res) => {
     //update parent in child data
     Member.findOneAndUpdate(
       { member_id: node_member_id },
-      { $push: { "relationship.spouse": member_id } },
+      { $push: { spouse: member_id } },
       { new: true }
     )
       .then((updatedMember) => {
@@ -363,7 +363,7 @@ const addMember = (req, res) => {
     //update child in the parent data
     Member.findOneAndUpdate(
       { member_id: member_id },
-      { $push: { "relationship.spouse": node_member_id } },
+      { $push: { spouse: node_member_id } },
       { new: true }
     )
       .then((updatedMember) => {
