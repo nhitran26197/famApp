@@ -17,7 +17,7 @@ const login = (req, res) => {
     //user input
     const { username, password } = req.body;
     console.log(username);
-    User.findOne({username: "froppyboppy" }, (err, userData) => {
+    User.findOne({username: username }, (err, userData) => {
         console.log("ligma");
         if (err) {
             console.log(err);
@@ -33,8 +33,14 @@ const login = (req, res) => {
             }
             else {
                 console.log("DIEEEE");
-                res.json({message: "nope you stupid bitch"});
+                res.json({message: "wrong password you idiot sandwich"});
             }
+        }
+        else
+        {
+            console.log("nope dont work");
+            res.json({message: "username doesnt exist CUH"});
+            return;
         }
     }
     );
