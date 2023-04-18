@@ -1,17 +1,4 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
+
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import Nav from "./navbar";
 import AddMemberModal from "./addMemberModal";
