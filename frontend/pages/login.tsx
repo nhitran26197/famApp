@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../styles/login.module.css';
 import { useRouter } from 'next/router'
+import Link from 'next/link';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -52,10 +53,10 @@ const Login = () => {
             <span className={styles.remember}>Remember me</span>
           </label>
           <label>
-            <a className={styles.forgot} href="/forgot">Forgot password?</a>
+            <Link href="/forgot"><a className={styles.forgot}>Forgot Password?</a></Link>
           </label>
           <button type="submit">Login</button>
-          <a className={styles.registerLink}href="/register">Dont have an account? Register here!</a>
+          <Link href="/register"><a className={styles.link}>Sign Up</a></Link>
           </form>
       </div>
       <div>
