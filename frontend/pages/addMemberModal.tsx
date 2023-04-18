@@ -22,7 +22,7 @@ function PostPop() {
         backdrop="static"
         keyboard={false}
         size="lg"
-        centered="true"
+        centered={true}
       >
         <Modal.Header closeButton>
           <Modal.Title>Modal title</Modal.Title>
