@@ -49,7 +49,7 @@ const Login = () => {
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
           </label>
           <label>
-            <Link className={styles.forgot} to="/forgot">Forgot Password?</Link>
+            <Link className={styles.forgot} to="/forgot-password">Forgot Password?</Link>
           </label>
           <button type="submit">Login</button>
           <Link className={styles.link} to="/register">Sign Up</Link>
