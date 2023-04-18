@@ -1,4 +1,3 @@
-
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import Nav from "./navbar";
 import AddMemberModal from "./addMemberModal";
