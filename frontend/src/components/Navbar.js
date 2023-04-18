@@ -12,12 +12,11 @@ const navigation = [
   { name: "Events", href: "#", current: true },
   { name: "Travel", href: "#", current: false },
   { name: "Story", href: "#", current: false },
-  { name: "Friend", href: "#", current: false },
+  { name: "Feed", href: "#", current: false },
   { name: "Profile", href: "/profile", current: false },
 ];
 const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
+  { name: "Your Profile", href: "/profile" },
   { name: "Sign out", href: "/login" },
 ];
 //@ts-ignore
