@@ -25,7 +25,7 @@ const Forgot = () => {
           <button className={styles.button} type="submit">
             Reset Password
           </button>
-          <Link className={styles.link} href="/login">
+          <Link className={styles.link} to="/login">
             Login
           </Link>
         </form>
