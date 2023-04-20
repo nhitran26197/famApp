@@ -33,7 +33,8 @@ function Post() {
         <div class="whitespace-pre-wrap mt-7">Hello guys ?</div>
         <div class="mt-5 flex gap-2	 justify-center border-b pb-4 flex-wrap	">
           <img
-            src="https://images.unsplash.com/photo-1610147323479-a7fb11ffd5dd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80"
+            src="https://upload-picture-testing.s3.us-east-2.amazonaws.com/a65fd01f2056cc74f8ce88eb160248ac"
+            //src="https://images.unsplash.com/photo-1610147323479-a7fb11ffd5dd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80"
             class="bg-red-500 rounded-2xl w-1/3 object-cover h-96 flex-auto"
             alt="photo"
           />
