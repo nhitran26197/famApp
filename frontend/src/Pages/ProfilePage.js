@@ -1,11 +1,28 @@
 import "../Styles/Profile.css";
-import Navbar from "../Components/NavBar.js";
-import TimeLine from "../Components/Timeline.js";
+import Lfa from "../Components/fizz";
+
+const items = [
+  {
+    id: 1,
+    date: "Borthday",
+    description: "Happy Born Day!",
+  },
+  {
+    id: 2,
+    date: "Step 2",
+    description: "This is the second step",
+  },
+  {
+    id: 3,
+    date: "Step 3",
+    description: "This is the third step",
+  },
+];
 
 function ProfilePage() {
   return (
     <div>
-      <TimeLine />
+      <Lfa items={items} />
     </div>
   );
 }
