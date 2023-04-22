@@ -19,8 +19,8 @@ const Login = () => {
     console.log(userObject);
     setUser(userObject);
     document.getElementById('signInDiv').hidden = true;
-    localStorage.setItem('user', user.name);
-    localStorage.setItem('email', user.email);
+    localStorage.setItem('user', userObject.name);
+    localStorage.setItem('email', userObject.email);
   }
 
  
