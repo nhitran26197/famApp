@@ -10,6 +10,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import Feedpage from "./pages/feedpage";
 import BucketList from "./pages/Bucket";
 import ProfilePage from "./pages/ProfilePage";
+import TimelineDisplay from "./pages/TimelineDisplay";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -25,6 +26,7 @@ root.render(
         <Route path="/feedpage" element={<Feedpage />} />
         <Route path="/bucket" element={<BucketList />} />
         <Route path="/profilepage" element={<ProfilePage />} />
+        <Route path="/timeline" element={<TimelineDisplay />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

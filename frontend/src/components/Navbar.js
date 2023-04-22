@@ -27,13 +27,13 @@ function classNames(...classes) {
 export default function NavBar() {
   return (
     <>
-      <div className="mb-6">
+      <div className>
         <Disclosure as="nav" style={{ backgroundColor: "#9EBC9E" }}>
           {({ open }) => (
             <>
               <div className="mx-auto max-w-full px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
-                  <div className="flex items-center">
+                  <div className="flex items-center ml-10">
                     <div className="flex-shrink-0">
                       <img
                         className="h-12 w-21"
@@ -195,7 +195,6 @@ export default function NavBar() {
             </>
           )}
         </Disclosure>
-        
       </div>
     </>
   );

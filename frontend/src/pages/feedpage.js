@@ -13,7 +13,6 @@ function feedpage() {
         <div className="feed">
           <div>
             <Post />
-            <Post />
             <div className="h-24" />
           </div>
           <div>
