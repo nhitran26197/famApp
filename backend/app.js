@@ -1,41 +1,30 @@
 const express = require("express");
 const app = express();
-// const AWS = require("aws-sdk");
-// const multer = require("multer");
-// const multerS3 = require("multer-s3");
-app.use(express.json());
+const cors = require("cors");
 
+app.use(cors(), express.json());
+app.use(express.urlencoded({ extended: true }));
+//import S3 bucket
+const fs = require("fs");
+const util = require("util");
+const unlinkFile = util.promisify(fs.unlink);
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
+const { uploadFile } = require("./controllers/uploadFile");
+
+//cnnect to mongoDB
 const dbConnect = require("./controllers/connectMongoDb");
-const User = require("./models/user");
-const Member = require("./models/member");
 dbConnect();
 
+//import controllers
+const User = require("./models/user");
+const Member = require("./models/member");
 const addMember = require("./controllers/addmember");
 const showTree = require("./controllers/showtree");
 const posting = require("./controllers/posting");
 const { profilePost, profileGet } = require("./controllers/profile");
 const { travelPost, eventPost } = require("./controllers/feedpage");
-//const imageController = require("./controllers/convertURL");
 const getTree = require("./controllers/getTree");
-
-// const s3 = new AWS.S3({
-//   accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID,
-//   secretAccessKey: process.env.AWS_S3_SECRET_ACCESS_KEY,
-// });
-
-// const upload = multer({
-//   storage: multerS3({
-//     s3: s3,
-//     bucket: process.env.AWS_S3_BUCKET_NAME,
-//     acl: "public-read",
-//     metadata: (req, file, cb) => {
-//       cb(null, { fieldName: file.fieldname });
-//     },
-//     key: (req, file, cb) => {
-//       cb(null, Date.now().toString());
-//     },
-//   }),
-// });
 
 // const user = new User({
 //   username: "nhitran",
@@ -82,7 +71,21 @@ app.post("/feedpage/event", eventPost);
 //app.use("/image", imageController);
 app.get("/getTree", getTree);
 
-const PORT = 3001;
+app.post("/images", upload.single("image"), async (req, res) => {
+  const file = req.file;
+  console.log(file);
+
+  // apply filter
+  // resize
+
+  const result = await uploadFile(file);
+  console.log(result.Location);
+  await unlinkFile(file.path);
+
+  res.send(result.Location);
+});
+
+const PORT = 3030;
 app.listen(PORT, () => {
   console.log(`listening to port${PORT}`);
 });
