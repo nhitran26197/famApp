@@ -5,6 +5,9 @@ import MapComponent from "../components/MapComponent";
 import Tree from "../components/Tree";
 
 export default function Dashboard() {
+  console.log(localStorage.getItem("user"));
+  console.log(localStorage.getItem("email"));
+
   const center = {
     lat: 37.7749,
     lng: -122.4194,
