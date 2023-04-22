@@ -8,6 +8,8 @@ import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import ForgotPassword from "./pages/ForgotPassword";
 import Feedpage from "./pages/feedpage";
+import BucketList from "./pages/Bucket";
+import ProfilePage from "./pages/ProfilePage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -21,6 +23,8 @@ root.render(
         <Route path="/profile" element={<Profile />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/feedpage" element={<Feedpage />} />
+        <Route path="/bucket" element={<BucketList />} />
+        <Route path="/profilepage" element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
