@@ -1,4 +1,4 @@
-import "../Styles/App.css";
+import "../Styles/Feed.css";
 
 function AddButton() {
   return (
