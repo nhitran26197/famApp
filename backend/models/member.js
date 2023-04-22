@@ -17,10 +17,10 @@ const memberSchema = new mongoose.Schema({
     type: String,
   },
 
-  parent: [Number], // array of member_id
-  children: [Number],
-  sibling: [Number],
-  spouse: [Number],
+  parents: [], // array of member_id
+  children: [],
+  siblings: [],
+  spouses: [],
 });
 
 const Member = mongoose.model("Member", memberSchema);

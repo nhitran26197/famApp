@@ -33,12 +33,41 @@ const getTree = require("./controllers/getTree");
 //   member_id: "1",
 // });
 
-// const member = new Member({
-//   member_id: "2",
-//   name: "Mike",
-//   age: 35,
-//   account: "Mike1234",
-// });
+const member = new Member({
+  member_id: 1,
+  name: "Nhi the best",
+  age: 33,
+  picture: "https://upload-picture-testing.s3.us-east-2.amazonaws.com/cd4ce9c21b80cfdcdff9d798d80666a1",
+  account: "nhi123",
+  parents: [], // array of member_id
+  children: [{id:"mike123",type:"blood"}],
+  siblings: [],
+  spouses: [],
+});
+
+const member2 = new Member({
+  member_id: 2,
+  name: "mike",
+  age: 35,
+  picture: "https://wallpapers.com/images/featured/87h46gcobjl5e4xu.jpg",
+  account: "mike123",
+  parents: [{id:"nhi123",type:"blood"}], // array of member_id
+  children: [],
+  siblings: [],
+  spouses: [],
+});
+
+const member3 = new Member({
+  member_id: 3,
+  name: "chandra",
+  age: 19,
+  picture: "https://i.ibb.co/Hn9FVys/Profile-SF-min.png",
+  account: "chandra123",
+  parents: [], // array of member_id
+  children: [],
+  siblings: [],
+  spouses: [{id:"nhi123",type:"marriage"}],
+});
 
 // user
 //   .save()
@@ -49,7 +78,7 @@ const getTree = require("./controllers/getTree");
 //     console.log("not saved ");
 //   });
 
-// member
+// member3
 //   .save()
 //   .then(() => {
 //     console.log("saved to mongoDB");
@@ -85,7 +114,7 @@ app.post("/images", upload.single("image"), async (req, res) => {
   res.send(result.Location);
 });
 
-const PORT = 3030;
+const PORT = 3010;
 app.listen(PORT, () => {
   console.log(`listening to port${PORT}`);
 });
