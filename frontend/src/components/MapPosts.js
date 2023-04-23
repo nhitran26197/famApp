@@ -1,65 +1,74 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState,createRoot } from "react";
 
-//@ts-ignore
+
+
+function Marker({position, map, children}){
+  const markerRef= useRef();
+  const rootRef = useRef();
+
+
+  useEffect(()=>{
+    if(!rootRef.current){
+      const container = document.createElement('div');
+      rootRef.current = createRoot(container);
+      markerRef.current = new window.google.maps.marker.AdvancedMarkerView({
+        position,
+        content: container,
+    });
+    }
+  },[])
+
+  useEffect(()=>{
+    rootRef.current.render(children);
+    markerRef.current.position = position;
+    markerRef.current.map = map;
+  },[position, map, children])
+}
+
+function MapPosts({map}){
+  const [posts, setPosts] = useState(null);
+
+  useEffect(()=>{
+    fetch('http://localhost:3030/getPosts').then(res => res.json()).then(data => {
+      console.log(data);
+      setPosts(data);
+    })
+  },[])
+
+
+  return(
+    <div>
+      {posts && posts.map(([key,post]) => {
+        return(
+          <Marker key={key} position={{lat:post.location_lat,lng:post.location_long}} map={map}>
+            <div className="w-4 bg-black">
+              <h2 className="text-white">{post.caption}</h2>
+            </div>
+          </Marker>
+        )
+      })}
+    </div>
+  )
+}
+    
 export default function MapComponent() {
   const ref = useRef();
-  const [center, setCenter] = useState({
-    lat: 40.68018796966656,
-    lng: -74.00422464026019,
-  });
+  const [map, setMap] = useState(null);
 
-  let posts = [];
-  useEffect(() => {
-    fetch("http://localhost:3030/getPosts")
-      .then((result) => {
-        //result.json();
-        return result.json();
-      })
-      .then((data) => {
-        posts = data;
-      })
-      .then(() => {
-        console.log(posts[0].location_lat);
-        console.log(posts[0]);
-        setCenter({ lat: posts[0].location_lat, lng: posts[0].location_long });
-        console.log(center);
-        const map = new window.google.maps.Map(ref.current, {
-          center,
-          zoom: 8,
-        });
-        let arrPost = [];
-        for (let i = 0; i < posts.length; i++) {
-          arrPost[i] = {
-            position: new window.google.maps.LatLng(
-              posts[i].location_lat,
-              posts[i].location_long
-            ),
-            icon: {
-              url: posts[i].picture,
-              scaledSize: new window.google.maps.Size(60, 80),
-            },
-          };
-        }
-        for (let i = 0; i < arrPost.length; i++) {
-          //@ts-ignore
-          new window.google.maps.Marker({
-            position: arrPost[i].position,
-            //@ts-ignore
-            icon: arrPost[i].icon,
-            map: map,
-          });
-        }
-      })
+  useEffect(()=>{
+    setMap(new window.google.maps.Map(ref.current, {
+      center: { lat: 37.7749, lng: -122.4194 },
+      zoom: 13,
+    }));
+  },[])
 
-      .catch((err) => console.log(err));
-  }, []);
-
-  //@ts-ignore
+      
   return (
     <div
       style={{ width: "800px", height: "900px", borderRadius: "20px" }}
       ref={ref}
-      id="map"
-    />
+      id="map">
+        {map && <MapPosts map={map}></MapPosts>}
+    </div>
   );
 }
