@@ -6,6 +6,11 @@ import MapComponent from "../components/MapComponent";
 import { Wrapper } from "@googlemaps/react-wrapper";
 
 function feedpage() {
+  const center = {
+    lat: 37.7749,
+    lng: -122.4194,
+  };
+  const zoom = 13;
   return (
     <div classsName="container">
       <div>
