@@ -26,6 +26,7 @@ const { profilePost, profileGet } = require("./controllers/profile");
 const { travelPost, eventPost } = require("./controllers/feedpage");
 const getTree = require("./controllers/getTree");
 const getPosts = require("./controllers/getPosts");
+const bucketlist = require("./controllers/bucketlist");
 
 // const user = new User({
 //   username: "nhitran",
@@ -58,7 +59,11 @@ const getPosts = require("./controllers/getPosts");
 //   .catch((error) => {
 //     console.log("not saved ");
 //   });
-
+app.get("/bucketlist", bucketlist.getAllBucket);
+app.get("/bucketlist/:title", bucketlist.getBucketByTitle);
+app.post("/bucketlist/create", bucketlist.createBucket);
+app.post("/bucketlist/update/:id", bucketlist.updateBucket);
+app.delete("/bucketlist/delete/:id", bucketlist.deleteBucket);
 app.post("/addmember", addMember);
 app.get("/showtree/parent", showTree.parent);
 app.get("/showtree/children", showTree.children);

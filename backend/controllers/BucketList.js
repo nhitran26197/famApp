@@ -1,10 +1,10 @@
 //bucket list controller
 const Bucket = require('../models/bucketModel.js');
 
-const bucketController = {
+const bucketlist =  {
     //get all bucket list
     getAllBucket: (req, res) => {
-        Bucket.find({})
+        Bucket.find(req)
             .then((result) => {
                 res.json(result);
             })
@@ -48,7 +48,8 @@ const bucketController = {
                 title: req.body.title,
                 description: req.body.description,
                 location: req.body.location,
-            }
+            },
+            { new: true},
         )
             .then((result) => {
                 res.json(result);
@@ -70,4 +71,4 @@ const bucketController = {
     },
 };
 
-module.exports = bucketController;
+module.exports = bucketlist;
