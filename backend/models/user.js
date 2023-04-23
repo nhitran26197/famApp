@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
 });
 
 //below code succesfully uses bcrypt to hash now just need to dehash stored string when veryfing user
-/* 
+
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     return next();
@@ -25,7 +25,7 @@ userSchema.pre("save", async function (next) {
   this.password = hash;
   next();
 });
-*/
+
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;

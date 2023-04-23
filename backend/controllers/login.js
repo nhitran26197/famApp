@@ -1,5 +1,6 @@
 //import schemas of the user and members
 const User = require('../models/user');
+const bcrypt = require("bcrypt");
 
 const users = (req, res) => {
     User.find({}, (err, userData) => {
@@ -21,26 +22,47 @@ const login = (req, res) => {
         console.log("ligma");
         if (err) {
             console.log(err);
+            console.log("internal server error");
             res.status(500).send();
             return
         }
         console.log("fugma");
         if (userData) {
-        console.log(userData);
-            if (userData.password === password) {
+        console.log(userData.password);
+        console.log(password);
+        bcrypt.compare(password, userData.password, (err, result) => {
+            if (err) {
+              console.log(err);
+              return;
+            }
+            if(result)
+            {
                 console.log("login successful");
-                res.json({message: "login successful"});
+                res.status(200).send();
             }
-            else {
-                console.log("DIEEEE");
-                res.json({message: "wrong password you idiot sandwich"});
+            else
+            {
+                console.log("Wrong password");
+                res.status(400).send();
             }
+            console.log('Password match:', result);
+          });
+
+            // if (userData.password === password) {
+            //     //console.log("login successful");
+            //     res.status(200).send();
+            // }
+            // else {
+            //     //console.log("Wrong password");
+            //     res.status(400).send();
+            // }
         }
         else
         {
-            console.log("nope dont work");
-            res.json({message: "username doesnt exist CUH"});
-            return;
+            console.log("username doesnt exist");
+            res.status(404).send();
+            //res.json({message: "username doesnt exist CUH"});
+            //return;
         }
     }
     );
