@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../css/forgot.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Forgot = () => {
   const [email, setEmail] = useState("");
@@ -8,6 +9,25 @@ const Forgot = () => {
   const routeToLogin = () => {
     navigate("/");
   };
+
+  const handleReset = async (e) => {
+    e.preventDefault();
+    console.log(email);
+    axios
+      .post("http://localhost:3030/pwReset", {
+        email,
+      }
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          alert("Check your email for a link to reset your password!!!!!!");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
 
   return (
     <div className={styles.container}>
@@ -22,7 +42,7 @@ const Forgot = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </label>
-          <button className={styles.button} type="submit">
+          <button onClick={handleReset} className={styles.button} type="submit">
             Reset Password
           </button>
           <Link className={styles.link} to="/login">

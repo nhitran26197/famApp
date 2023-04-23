@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../css/register.module.css";
 import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -13,6 +14,27 @@ const Register = () => {
 
   const routeToLogin = () => {
     navigte("/login");
+  };
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:3030/signup", {
+        username: username,
+        password: password,
+        email: email,
+        firstName: firstName,
+        lastName: lastName,
+        age: age,
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          navigte("/login");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -74,7 +96,7 @@ const Register = () => {
               onChange={(e) => setAge(e.target.value)}
             />
           </label>
-          <button className={styles.button} type="submit">
+          <button onClick={handleRegister} className={styles.button} type="submit">
             Register
           </button>
           <Link className={styles.link} to="/login">

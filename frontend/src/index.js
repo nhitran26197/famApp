@@ -11,6 +11,7 @@ import Feedpage from "./pages/feedpage";
 import BucketList from "./pages/Bucket";
 import ProfilePage from "./pages/ProfilePage";
 import TimelineDisplay from "./pages/TimelineDisplay";
+import Forgot from "./pages/ResetPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -27,6 +28,7 @@ root.render(
         <Route path="/bucket" element={<BucketList />} />
         <Route path="/profilepage" element={<ProfilePage />} />
         <Route path="/timeline" element={<TimelineDisplay />} />
+        <Route path="/reset-password" element={<Forgot />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

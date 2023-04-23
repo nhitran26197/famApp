@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from '../css/login.module.css';
 import { Link, useNavigate} from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
-
+import axios from 'axios';
 const Login = () => {
 
   //route to dashboard
@@ -41,32 +41,29 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   let navigate = useNavigate();
-  const handleLogin = () => {
-  
-   
-    if (username !== '' && password !== '') {
 
-      // fetch('http://localhost:8000/login', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({
-      //     username,
-      //     password,
-      //   }),
-      // })
-      //   .then((res) => res.json())
-      //   .then((data) => {
-      //     if (data.error) {
-      //       alert(data.error);
-      //     } else {
-      //       navigate('/dashboard');
-      //     }
-      //   });
-      navigate('/dashboard');
-    }
-  };
+  //async function to handle login
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    
+
+    axios
+      .post('http://localhost:3030/login', {
+        username: username,
+        password: password,
+      })
+      .then((res) => {
+        if(res.status === 200){
+          localStorage.setItem('user', res.data.name);
+          localStorage.setItem('email', res.data.email);
+          navigate('/dashboard');
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      }
+      );
+  }
 
   return (
     <div className={styles.container}>

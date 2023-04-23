@@ -17,6 +17,10 @@ const dbConnect = require("./controllers/connectMongoDb");
 dbConnect();
 
 //import controllers
+const { login } = require("./controllers/login");
+const signup = require("./controllers/signup");
+const pwReset = require("./controllers/pwReset");
+const changepw = require("./controllers/changepw");
 const User = require("./models/user");
 const Member = require("./models/member");
 const addMember = require("./controllers/addmember");
@@ -59,18 +63,22 @@ const getPosts = require("./controllers/getPosts");
 //     console.log("not saved ");
 //   });
 
+app.post("/changepw", changepw);
 app.post("/addmember", addMember);
 app.get("/showtree/parent", showTree.parent);
 app.get("/showtree/children", showTree.children);
 app.get("/showtree/spouse", showTree.spouse);
 app.get("/showtree/sibling", showTree.sibling);
 app.post("/posting", posting);
+app.post("/login", login);
 app.post("/profile", profilePost);
 app.post("/profileget", profileGet);
 app.post("/feedpage/travel", travelPost);
 app.post("/feedpage/event", eventPost);
+app.post("/signup", signup);
 app.get("/getTree", getTree);
 app.get("/getPosts", getPosts);
+app.post("/pwReset", pwReset);
 
 app.post("/images", upload.single("image"), async (req, res) => {
   const file = req.file;
