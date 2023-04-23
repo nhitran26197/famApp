@@ -1,19 +1,21 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const Schema = mongoose.Schema;
+//const Schema = mongoose.Schema;
 const bcryptSalt = process.env.BCRYPT_SALT;
 
-const userSchema = new mongoose.Schema({
-  username: String,
-  password: String,
-  email: String,
-  bucket_list: String,
-  post: [],
-  member_id: Number,
-},
-{
-  timestamps : true,
-});
+const userSchema = new mongoose.Schema(
+  {
+    username: String,
+    password: String,
+    email: String,
+    bucket_list: String,
+    post: [],
+    member_id: Number,
+  },
+  {
+    timestamps: true,
+  }
+);
 
 //below code succesfully uses bcrypt to hash now just need to dehash stored string when veryfing user
 
