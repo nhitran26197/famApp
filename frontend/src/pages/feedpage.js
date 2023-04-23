@@ -1,9 +1,16 @@
-import "../css/feedpage.module.css";
+import "../css/feedpage.css";
 import Navbar from "../components/Navbar";
 import Post from "../components/Post";
 import AddButton from "../components/AddButton";
+import MapComponent from "../components/MapComponent";
+import { Wrapper } from "@googlemaps/react-wrapper";
 
 function feedpage() {
+  const center = {
+    lat: 37.7749,
+    lng: -122.4194,
+  };
+  const zoom = 13;
   return (
     <div classsName="container">
       <div>
@@ -19,7 +26,11 @@ function feedpage() {
             <AddButton />
           </div>
         </div>
-        <div>google maps</div>
+        <div>
+          <Wrapper apiKey={"AIzaSyCecWQ01w2hL3sX2XNdjBVsL0KA9Yln4Hs"}>
+            <MapComponent center={center} zoom={zoom} />
+          </Wrapper>
+        </div>
       </div>
     </div>
   );

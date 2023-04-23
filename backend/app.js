@@ -25,6 +25,7 @@ const posting = require("./controllers/posting");
 const { profilePost, profileGet } = require("./controllers/profile");
 const { travelPost, eventPost } = require("./controllers/feedpage");
 const getTree = require("./controllers/getTree");
+const getPosts = require("./controllers/getPosts");
 
 // const user = new User({
 //   username: "nhitran",
@@ -68,8 +69,8 @@ app.post("/profile", profilePost);
 app.post("/profileget", profileGet);
 app.post("/feedpage/travel", travelPost);
 app.post("/feedpage/event", eventPost);
-//app.use("/image", imageController);
 app.get("/getTree", getTree);
+app.get("/getPosts", getPosts);
 
 app.post("/images", upload.single("image"), async (req, res) => {
   const file = req.file;
