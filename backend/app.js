@@ -69,6 +69,7 @@ const member3 = new Member({
   spouses: [{id:"nhi123",type:"marriage"}],
 });
 
+
 // user
 //   .save()
 //   .then(() => {
