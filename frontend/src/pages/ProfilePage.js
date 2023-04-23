@@ -1,7 +1,35 @@
 //profile page
 import React, { Component } from "react";
 import NavBar from "../components/Navbar";
-import BucketList from "../components/bucketList";
+import TimeLineLogic from "../components/TimeLineLogic";
+import BucketList from "../components/bucketListCard";
+import "../css/Profile.css";
+import familypage from "../familyimage.jpeg";
+import AddGoal from "../components/addGoal";
+
+const bucketListItems = [
+  {
+    id: 1,
+    title: "Visit the Grand Canyon",
+    description:
+      "Experience the natural beauty of one of America's most iconic landmarks.",
+    location: "Arizona, USA",
+  },
+  {
+    id: 2,
+    title: "Learn to surf",
+    description:
+      "Ride the waves like a pro and experience the thrill of surfing.",
+    location: "Hawaii, USA",
+  },
+  {
+    id: 3,
+    title: "Go on a safari",
+    description:
+      "Experience the thrill of seeing wild animals in their natural habitat.",
+    location: "Kenya, Africa",
+  },
+];
 
 const items = [
   {
@@ -37,6 +65,11 @@ export default function Profile() {
           ></span>
         </div>
         <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px">
+          {/* <img
+            src="../familyimage.jpeg"
+            alt="..."
+        
+          /> */}
           {/* <svg
             class="absolute bottom-0 overflow-hidden"
             xmlns="http://www.w3.org/2000/svg"
@@ -53,8 +86,8 @@ export default function Profile() {
           </svg> */}
         </div>
       </section>
-      <section class="relative py-16 bg-blueGray-200">
-        <div class="container mx-auto px-4">
+      <section class="">
+        <div class="mx-auto px-4">
           <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
             <div class="px-6">
               <div class="flex flex-wrap justify-center">
@@ -101,43 +134,32 @@ export default function Profile() {
                 </div>
               </div>
               <div class="text-center mt-12">
-                <h3 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
+                <h3 class="text-4xl font-semibold leading-normal text-blueGray-700 mb-2">
                   Jenna Stones
                 </h3>
-                <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
-                  <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
-                  Los Angeles, California
-                </div>
-                <div class="mb-2 text-blueGray-600 mt-10">
-                  <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
-                  Solution Manager - Creative Tim Officer
-                </div>
-                <div class="mb-2 text-blueGray-600">
-                  <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>
-                  University of Computer Science
-                </div>
-              </div>
-              <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
-                <div class="flex flex-wrap justify-center">
-                  <div class="w-full lg:w-9/12 px-4">
-                    <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
-                      An artist of considerable range, Jenna the name taken by
-                      Melbourne-raised, Brooklyn-based Nick Murphy writes,
-                      performs and records all of his own music, giving it a
-                      warm, intimate feel with a solid groove structure. An
-                      artist of considerable range.
-                    </p>
-                    <a href="#pablo" class="font-normal text-pink-500">
-                      Show more
-                    </a>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <div></div>
+      <div class="border border-red-500">
+        <div class="flex pt-10 border border-red-500">
+          <div class="border border-red-500">
+            <AddGoal />
+          </div>
+          <div class="border border-red-500">
+            <AddGoal />
+          </div>
+        </div>
+        <div className="flex">
+          <div className="content flex justify-center p-8">
+            <BucketList items={bucketListItems} />
+          </div>
+          <div className="content flex justify-center p-8">
+            <TimeLineLogic items={items} />
+          </div>
+        </div>
+      </div>
     </>
   );
 }
