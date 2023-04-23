@@ -21,6 +21,7 @@ const { profilePost, profileGet } = require("./controllers/profile");
 // const imageController = require("./controllers/convertURL");
 //const getTree = require("./controllers/getTree");
 const {login, users} = require("./controllers/login");
+const gmaillogin = require("./controllers/gmaillogin");
 const signUp = require("./controllers/signup");
 const updatePW = require("./controllers/changepw");
 //const testing = require("./controllers/testing");
@@ -85,6 +86,7 @@ app.get('/tshirt', (req, res) => {
 });
 app.post("/signup", signUp);
 app.post("/login", login);
+app.post("/gmaillogin", gmaillogin);
 app.get("/user", users);
 app.get("/pwReset", pwReset);
 app.put("/changepw", changepw);
