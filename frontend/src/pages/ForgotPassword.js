@@ -13,6 +13,7 @@ const Forgot = () => {
   const handleReset = async (e) => {
     e.preventDefault();
     console.log(email);
+    sessionStorage.setItem("email", email);
     axios
       .post("http://localhost:3030/pwReset", {
         email,

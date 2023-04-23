@@ -5,8 +5,6 @@ const nodeMailer = require('nodemailer');
 const bcrypt = require("bcrypt");
 const bcryptSalt = process.env.BCRYPT_SALT;
 const mongoose = require("mongoose");
-const changepw = require('../controllers/changepw');
-const GetEmail = require('../controllers/changepw');
 
 // const changepw = async (req, res) => {
 //     try {
@@ -92,11 +90,9 @@ const pwReset = (req, res) => {
             res.status(404).send();
         }
         else {
-            GetEmail(userEmail);
             //send the actual email and use nodemailer
             //console.log(typeof userEmail);
             sendEmail();
-            changepw();
             //console.log("Email sent succesfully!");
             res.status(200).send();
             //res.json({message: "Email sent succesfully!"})

@@ -3,20 +3,16 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = process.env.BCRYPT_SALT;
 const mongoose = require("mongoose");
 
-let Email = "";
-const GetEmail = (email) => {
-    Email = email;
-}
+
 
 const changepw = async (req, res) => {
     //user input
-   
-    
-    //console.log(req.body);
-    console.log("EMAIL IS: ", Email);
-    const { newPassword } = req.body;
+    //console.log(req.body);\
+    const { newPassword, email } = req.body;
     console.log(newPassword);
-    console.log(Email);
+
+    
+    console.log(email);
 
     //salt and hash new password
     let hash = await bcrypt.hash(newPassword, Number(bcryptSalt));
@@ -27,7 +23,7 @@ const changepw = async (req, res) => {
     console.log(hash);
     //console.log("working before update");
     //save updated user document
-    User.updateOne({email: Email},
+    User.updateOne({email: email},
         { $set: { password: hash } }, function (err, pw) {
             if (err){
                 console.log("Error updating PW");
@@ -40,7 +36,7 @@ const changepw = async (req, res) => {
             }
         }
     );
-    User.find({email: Email}, (err, userData) => {
+    User.find({email: email}, (err, userData) => {
         console.log(userData);
     });
     //console.log("working after update");
@@ -48,4 +44,3 @@ const changepw = async (req, res) => {
 }
 
 module.exports = changepw;
-module.exports = GetEmail;

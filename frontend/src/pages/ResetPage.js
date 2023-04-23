@@ -15,10 +15,11 @@ const Forgot = () => {
 
     const handleReset = async (e) => {
         console.log(newPassword);
+        let email = sessionStorage.getItem("email");
         e.preventDefault();
         axios
             .post("http://localhost:3030/changepw", {
-                newPassword,
+                newPassword, email
             })
             .then((res) => {
                 if (res.status === 200) {
@@ -35,7 +36,7 @@ const Forgot = () => {
         <div className={styles.container}>
             <div className={styles.form}>
                 <h1 className={styles.h1}>Reset Password</h1>
-                <form onSubmit={routeToLogin}>
+                <form method="POST"onSubmit={routeToLogin}>
                     <label>
                         <span>New Password</span>
                         <input type="text" value={newPassword} onChange={(e) => SetNewPassword(e.target.value)}/>
