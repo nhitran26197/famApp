@@ -1,4 +1,4 @@
-import React, {  useState, useEffect } from "react";
+import React, {  useState} from "react";
 import ReactFamilyTree from "react-family-tree";
 import { PinchZoomPan } from "./PinchZoomPan";
 import FamilyNode  from "./FamilyNode";
@@ -12,8 +12,6 @@ export default function Tree({ shape }) {
   
 
   const [rootId, setRootId] = useState(firstNodeId);
-
-  const [hoverId, setHoverId] = useState();
 
   return (
     <div>
