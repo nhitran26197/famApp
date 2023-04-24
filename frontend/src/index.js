@@ -12,13 +12,14 @@ import BucketList from "./pages/Bucket";
 import ProfilePage from "./pages/ProfilePage";
 import TimelineDisplay from "./pages/TimelineDisplay";
 import Forgot from "./pages/ResetPage";
+import AddMember from "./pages/addMember";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
+        {/* <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -28,7 +29,8 @@ root.render(
         <Route path="/bucket" element={<BucketList />} />
         <Route path="/profilepage" element={<ProfilePage />} />
         <Route path="/timeline" element={<TimelineDisplay />} />
-        <Route path="/reset-password" element={<Forgot />} />
+        <Route path="/reset-password" element={<Forgot />} /> */}
+        <Route path="/" element={<AddMember />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

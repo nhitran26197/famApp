@@ -1,7 +1,7 @@
 const Member = require("../models/member");
 const addMember = (req, res) => {
   let request = req.body;
-  node_member_id = request.member_id;
+  let node_member_id = request.member_id;
   let member_id;
   let is_exist = false;
   do {
@@ -234,7 +234,6 @@ const addMember = (req, res) => {
         }
       }
 
-      //update parent in child data
       const updatedMember5 = await Member.findOneAndUpdate(
         { member_id: node_member_id },
         { $push: { sibling: member_id } },
@@ -242,7 +241,6 @@ const addMember = (req, res) => {
       );
       console.log(updatedMember5);
 
-      //update child in the parent data
       const updatedMember6 = await Member.findOneAndUpdate(
         { member_id: member_id },
         { $push: { sibling: node_member_id } },
@@ -259,7 +257,7 @@ const addMember = (req, res) => {
       //update existing relatioship with new parent
       let children = [];
       const result1 = await Member.findOne({ member_id: node_member_id });
-      children = result1.relationship.children.slice();
+      children = result1.children.slice();
       console.log(children.length);
 
       if (children.length != 0) {

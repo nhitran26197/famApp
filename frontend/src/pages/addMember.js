@@ -1,6 +1,4 @@
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
-//import Mainpage from "./mainpage";
-//import AddMemberModal from "./addMemberModal";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -253,8 +251,6 @@ export default function AddMember() {
           Submit
         </button>
       </div>
-
-      <AddMemberModal />
     </>
   );
 }

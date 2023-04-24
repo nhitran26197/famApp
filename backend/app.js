@@ -40,10 +40,12 @@ const bucketlist = require("./controllers/bucketlist");
 // });
 
 // const member = new Member({
-//   member_id: "2",
-//   name: "Mike",
-//   age: 35,
-//   account: "Mike1234",
+//   member_id: 2,
+//   name: "Chandra",
+//   age: 24,
+//   account: "Chandra321",
+//   picture:
+//     "https://m.media-amazon.com/images/M/MV5BOTBhMTI1NDQtYmU4Mi00MjYyLTk5MjEtZjllMDkxOWY3ZGRhXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_FMjpg_UX1000_.jpg",
 // });
 
 // user
