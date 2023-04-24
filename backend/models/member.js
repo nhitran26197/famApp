@@ -1,22 +1,11 @@
 const mongoose = require("mongoose");
 
 const memberSchema = new mongoose.Schema({
-  member_id: {
-    type: Number,
-  },
-  name: {
-    type: String,
-  },
-  age: {
-    type: Number,
-  },
-  picture: {
-    type: String,
-  },
-  account: {
-    type: String,
-  },
-
+  member_id:Number,
+  name: String,
+  age: Number,
+  picture: String,
+  account: String,
   parent: [Number], // array of member_id
   children: [Number],
   sibling: [Number],

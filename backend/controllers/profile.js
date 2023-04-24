@@ -19,7 +19,7 @@ const profilePost = (req, res) => {
 };
 
 const profileGet = (req, res) => {
-  let member_id = req.body.member_id;
+  let member_id = localStorage.getItem("member_id");
   //   let name = req.body.name;
   //   let age = req.body.age;
 
@@ -28,6 +28,7 @@ const profileGet = (req, res) => {
   Member.findById(member_id).then((result) => {
     console.log(result);
     res.json(result);
+    res.status(200).send();
   });
 };
 

@@ -1,6 +1,19 @@
 //import schemas of the user and members
 const User = require('../models/user');
+const Member = require('../models/member');
 const bcrypt = require("bcrypt");
+
+const members = (req, res) => {
+    Member.find({ account : userData.username}, (err, memberData) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+            return
+        }
+        console.log(memberData);
+        res.json(memberData);
+    });
+}
 
 const users = (req, res) => {
     User.find({}, (err, userData) => {
@@ -9,6 +22,7 @@ const users = (req, res) => {
             res.status(500).send();
             return
         }
+        console.log(userData);
         res.json(userData);
     });
 }
@@ -43,7 +57,28 @@ const login = (req, res) => {
             if(result)
             {
                 console.log("login successful");
-                res.status(200).send();
+                //let MemberData = [];
+
+                Member.find({ account : userData.username}, (err, memberData) => {
+                    if (err) {
+                        console.log(err);
+                        //res.status(500).send();
+                        return
+                    }
+                    //console.log(memberData);
+                    //console.log(typeof userData);
+                    let finalObj = {
+                        ...userData,
+                        ...memberData
+                    };
+                    res.json(finalObj);
+                    res.status(200).send();
+                    console.log(finalObj);
+                });
+
+                //res.json(userData);
+
+                // res.status(200).send();
             }
             else
             {
@@ -76,4 +111,4 @@ const login = (req, res) => {
 
 
 
-module.exports = {login, users};
+module.exports = {login, users, members};
