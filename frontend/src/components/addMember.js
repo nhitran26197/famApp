@@ -19,7 +19,7 @@ async function postImage({ image }) {
 export default function AddMember() {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
-  const [relationship, setRelationship] = useState("");
+  const [relationship, setRelationship] = useState("parent");
   const [account, setAccount] = useState("");
   const [picture, setPicture] = useState("");
   const [images, setImages] = useState([]);

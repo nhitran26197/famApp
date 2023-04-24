@@ -20,7 +20,7 @@ export default function Example() {
   const [file, setFile] = useState();
   const [images, setImages] = useState([]);
   const [picture, setPicture] = useState();
-  const [type, setType] = useState();
+  const [type, setType] = useState("travel");
   const [caption, setCaption] = useState();
   const [location_lat, setLocation_lat] = useState();
   const [location_long, setLocation_long] = useState();
