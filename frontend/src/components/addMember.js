@@ -46,7 +46,7 @@ export default function AddMember() {
     fetch("http://localhost:3030/addmember", {
       method: "POST",
       body: JSON.stringify({
-        member_id: 0,
+        member_id: 1,
         name: name,
         age: age,
         relationship: relationship,
