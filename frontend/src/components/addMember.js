@@ -19,7 +19,7 @@ async function postImage({ image }) {
 export default function AddMember() {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
-  const [relationship, setRelationship] = useState("");
+  const [relationship, setRelationship] = useState("parent");
   const [account, setAccount] = useState("");
   const [picture, setPicture] = useState("");
   const [images, setImages] = useState([]);
@@ -71,8 +71,6 @@ export default function AddMember() {
         <div
           style={{
             display: "flex",
-            //justifyContent: "center",
-            //alignItems: "center",
           }}
         >
           <form>
@@ -82,7 +80,6 @@ export default function AddMember() {
                   width: "500px",
                   height: "300px",
                   borderRadius: "20px",
-                  marginLeft: "150px",
                 }}
               >
                 <p className="mt-1 text-sm leading-6 text-gray-600"></p>
@@ -185,9 +182,7 @@ export default function AddMember() {
             <div
               style={{
                 width: "500px",
-                height: "500px",
                 borderRadius: "20px",
-                marginLeft: "150px",
               }}
             >
               <div className="space-y-12">
@@ -237,12 +232,12 @@ export default function AddMember() {
               </div>
             </div>
           </div>
-          <div className="mt-6 flex items-center justify-center gap-x-6">
+          <div className="flex items-center justify-center gap-x-6">
             <button type="submit ">Add Picture</button>
           </div>
         </form>
-        <div style={{ width: "100px", height: "100px" }}>
-          <img src={picture}></img>
+        <div className="flex w-full justify-center">
+          <img width="100px" src={picture}></img>
         </div>
       </div>
       <div className="mt-6 flex items-center justify-end gap-x-6">
