@@ -15,14 +15,12 @@ const { uploadFile } = require("./controllers/uploadFile");
 //cnnect to mongoDB
 const dbConnect = require("./controllers/connectMongoDb");
 dbConnect();
-
+const Member = require("./models/member");
 //import controllers
 const { login } = require("./controllers/login");
 const signup = require("./controllers/signup");
 const pwReset = require("./controllers/pwReset");
 const changepw = require("./controllers/changepw");
-const User = require("./models/user");
-const Member = require("./models/member");
 const addMember = require("./controllers/addmember");
 const showTree = require("./controllers/showtree");
 const posting = require("./controllers/posting");
@@ -40,10 +38,10 @@ const bucketlist = require("./controllers/bucketlist");
 // });
 
 // const member = new Member({
-//   member_id: "2",
-//   name: "Mike",
+//   member_id: "10",
+//   name: "Mik5",
 //   age: 35,
-//   account: "Mike1234",
+//   account: "Mike12345",
 // });
 
 // user

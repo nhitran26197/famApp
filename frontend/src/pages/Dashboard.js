@@ -3,17 +3,11 @@ import NavBar from "../components/Navbar";
 import { Wrapper } from "@googlemaps/react-wrapper";
 import { MapComponent } from "../components/MapPosts";
 import Tree from "../components/Tree";
-import newtree from "../treenew.json";
 
 export default function Dashboard() {
   console.log(localStorage.getItem("user"));
   console.log(localStorage.getItem("email"));
 
-  // const center = {
-  //   lat: 37.7749,
-  //   lng: -122.4194,
-  // };
-  // const zoom = 13;
   const [nodes, setNodes] = useState(null);
   useEffect(() => {
     console.log("fetching");
