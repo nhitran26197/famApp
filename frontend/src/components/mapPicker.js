@@ -1,7 +1,6 @@
 import { Wrapper } from "@googlemaps/react-wrapper";
 import GetCoordinates from "./getCoordinates";
 import React from "react";
-require("dotenv").config();
 
 function Map({ refLat, refLng }) {
   const center = {
@@ -13,7 +12,9 @@ function Map({ refLat, refLng }) {
   //@ts-ignore
   return (
     <div>
-      <Wrapper apiKey={process.env.GOOGLE_API_KEY}>
+      <Wrapper apiKey={"AIzaSyCecWQ01w2hL3sX2XNdjBVsL0KA9Yln4Hs"}
+            version="beta"
+            libraries={["marker"]}>
         <GetCoordinates
           center={center}
           zoom={zoom}

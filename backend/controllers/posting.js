@@ -1,7 +1,6 @@
 const Member = require("../models/member");
 const User = require("../models/user");
 const Post = require("../models/posts");
-const { userInfo } = require("os");
 
 const posting = (req, res) => {
   let request = req.body;

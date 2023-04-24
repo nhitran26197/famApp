@@ -1,5 +1,4 @@
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
-import PostPop from "./modal";
 
 import { useState, useRef } from "react";
 import axios from "axios";
@@ -21,7 +20,7 @@ export default function Example() {
   const [file, setFile] = useState();
   const [images, setImages] = useState([]);
   const [picture, setPicture] = useState();
-  const [type, setType] = useState();
+  const [type, setType] = useState("travel");
   const [caption, setCaption] = useState();
   const [location_lat, setLocation_lat] = useState();
   const [location_long, setLocation_long] = useState();
@@ -183,9 +182,7 @@ export default function Example() {
         >
           Get Location
         </button>
-      </div>
-      <PostPop />
-      <div>
+
         <button
           type="submit"
           style={{
