@@ -17,8 +17,8 @@ const getTree = (req, res) => {
           "spouses":[],
           "siblings":[],
         };
-        if (item.parents.length > 0) {
-          item.parents.map((parent) => {
+        if (item.parent.length > 0) {
+          item.parent.map((parent) => {
             obj.parents.push({"id":parent.id,"type":"blood"});
           })
         }
@@ -27,14 +27,14 @@ const getTree = (req, res) => {
             obj.children.push({"id":child.id,"type":"blood"});
           })
         }
-        if (item.spouses.length > 0) {
-          item.spouses.map((spouse) => {
+        if (item.spouse.length > 0) {
+          item.spouse.map((spouse) => {
             obj.spouses.push({"id":spouse.id,"type":"blood"});
           })
         }
-        if (item.siblings.length > 0) {
-          console.log(item.siblings.length)
-          item.siblings.map((sibling) => {
+        if (item.sibling.length > 0) {
+          console.log(item.sibling.length)
+          item.sibling.map((sibling) => {
             obj.siblings.push({"id":sibling.id,"type":"blood"});
           })
         }

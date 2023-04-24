@@ -3,6 +3,7 @@ import NavBar from "../components/Navbar";
 import { Wrapper } from "@googlemaps/react-wrapper";
 import { MapComponent } from "../components/MapPosts";
 import Tree from "../components/Tree";
+import newtree from "../treenew.json";
 
 export default function Dashboard() {
   console.log(localStorage.getItem("user"));
@@ -13,7 +14,7 @@ export default function Dashboard() {
   //   lng: -122.4194,
   // };
   // const zoom = 13;
-  const [nodes, setNodes] = useState(null);
+  const [nodes, setNodes] = useState(newtree);
   useEffect(() => {
     console.log("fetching");
     fetch("http://localhost:3030/gettree")
