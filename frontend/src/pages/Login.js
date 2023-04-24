@@ -25,18 +25,18 @@ const Login = () => {
 
  
 
-  useEffect(() => {
-    /* global google */
-    google.accounts.id.initialize({
-      client_id: "529244598477-he9l0o8rm3ou3e98u2c5peme74iod4c3.apps.googleusercontent.com",
-      callback: handleCallbackResponse,
-    });
+  // useEffect(() => {
+  //   /* global google */
+  //   google.accounts.id.initialize({
+  //     client_id: "529244598477-he9l0o8rm3ou3e98u2c5peme74iod4c3.apps.googleusercontent.com",
+  //     callback: handleCallbackResponse,
+  //   });
 
-    google.accounts.id.renderButton(
-      document.getElementById('signInDiv'),
-      { theme : 'outline', size : 'large', text: 'continue_with', width: '300px', height: '50px' }
-    );
-  }, []);
+  //   google.accounts.id.renderButton(
+  //     document.getElementById('signInDiv'),
+  //     { theme : 'outline', size : 'large', text: 'continue_with', width: '300px', height: '50px' }
+  //   );
+  // }, []);
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

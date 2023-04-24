@@ -11,7 +11,7 @@
   justify-content: center;
   border: 2px solid rgba(0, 0, 0, .2);
   border-radius: 50%;
-  overflow: hidden;
+  overflow: clip;
   cursor: pointer;
 }
 

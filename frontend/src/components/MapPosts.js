@@ -37,7 +37,7 @@ function MapPosts({ map }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+
         return JSON.stringify(data);
       })
       .then((res) => {
@@ -49,10 +49,6 @@ function MapPosts({ map }) {
       });
   }, []);
 
-  useEffect(() => {
-    console.log(posts);
-    console.log(loading);
-  }, [posts, loading]);
 
   return (
     <div>
