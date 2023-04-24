@@ -3,6 +3,7 @@ import NavBar from "../components/Navbar";
 import { Wrapper } from "@googlemaps/react-wrapper";
 import { MapComponent } from "../components/MapPosts";
 import Tree from "../components/Tree";
+import AddMember from "../components/addMember";
 
 export default function Dashboard() {
   console.log(localStorage.getItem("user"));
@@ -37,6 +38,9 @@ export default function Dashboard() {
             <h1 className=" text-2xl font-bold">Family Tree</h1>
           </div>
           {nodes ?<Tree shape={nodes} /> : <div>loading</div>}
+          <div className="flex justify-center">
+            <AddMember />
+          </div>
         </div>
         <div>
           <Wrapper

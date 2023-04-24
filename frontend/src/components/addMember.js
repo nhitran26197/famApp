@@ -23,6 +23,7 @@ export default function AddMember() {
   const [account, setAccount] = useState("");
   const [picture, setPicture] = useState("");
   const [images, setImages] = useState([]);
+  const [member_id, setMember_id] = useState(1);
   const [file, setFile] = useState(null);
 
   const submitPhoto = async (event) => {
@@ -45,7 +46,7 @@ export default function AddMember() {
     fetch("http://localhost:3030/addmember", {
       method: "POST",
       body: JSON.stringify({
-        member_id: 1,
+        member_id: 0,
         name: name,
         age: age,
         relationship: relationship,
@@ -254,7 +255,7 @@ export default function AddMember() {
         </button>
       </div>
 
-      <AddMemberModal />
+      {/* <AddMemberModal /> */}
     </>
   );
 }
