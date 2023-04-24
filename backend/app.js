@@ -30,7 +30,7 @@ const { profilePost, profileGet } = require("./controllers/profile");
 const { travelPost, eventPost } = require("./controllers/feedpage");
 const getTree = require("./controllers/getTree");
 const getPosts = require("./controllers/getPosts");
-const bucketlist = require("./controllers/bucketlist");
+const bucketlist = require("./controllers/BucketList");
 
 // const user = new User({
 //   username: "nhitran",
