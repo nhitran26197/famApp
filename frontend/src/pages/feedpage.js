@@ -2,7 +2,7 @@ import "../css/feedpage.css";
 import Navbar from "../components/Navbar";
 import Post from "../components/Post";
 import AddButton from "../components/AddButton";
-import MapComponent from "../components/MapComponent";
+import { MapComponent } from "../components/MapPosts";
 import { Wrapper } from "@googlemaps/react-wrapper";
 
 function feedpage() {
@@ -27,8 +27,12 @@ function feedpage() {
           </div>
         </div>
         <div>
-          <Wrapper apiKey={"AIzaSyCecWQ01w2hL3sX2XNdjBVsL0KA9Yln4Hs"}>
-            <MapComponent center={center} zoom={zoom} />
+          <Wrapper
+            apiKey={"AIzaSyCecWQ01w2hL3sX2XNdjBVsL0KA9Yln4Hs"}
+            version={["beta"]}
+            libraries={["marker"]}
+          >
+            <MapComponent />
           </Wrapper>
         </div>
       </div>

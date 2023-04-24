@@ -1,5 +1,9 @@
 import Modal from "react-bootstrap/Modal";
-import AddPost from "./addPost";
+import Button from "react-bootstrap/Button";
+import AddPost from "../pages/addPost";
+import AddButton from "./AddButton";
+import { useState } from "react";
+import "../css/feedpage.css";
 
 function PostPop() {
   const [show, setShow] = useState(false);
@@ -9,9 +13,20 @@ function PostPop() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch
-      </Button>
+      <div className="add-post-button">
+        <Button
+          variant="primary"
+          onClick={handleShow}
+          className="button1"
+          style={{ backgroundColor: "#9EBC9E", border: "none" }}
+        >
+          Add a post
+        </Button>
+      </div>
+
+      {/* <AddButton variant="primary" onClick={handleShow}>
+       
+      </AddButton> */}
 
       <Modal
         show={show}

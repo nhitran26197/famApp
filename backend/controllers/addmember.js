@@ -1,7 +1,7 @@
 const Member = require("../models/member");
 const addMember = (req, res) => {
   let request = req.body;
-  node_member_id = request.member_id;
+  let node_member_id = request.member_id;
   let member_id;
   let is_exist = false;
   do {
@@ -40,337 +40,267 @@ const addMember = (req, res) => {
       console.log(e);
     });
 
-  const parent = () => {
-    //update existing relatioship with new parent
-    let parent = [];
-    Member.findOne({ member_id: node_member_id })
-      .then((result) => {
-        parent = result.parent.slice();
-        console.log(parent.length);
-        return parent;
-      })
-      .then(() => {
-        if (parent.length != 0) {
-          console.log("helloo");
-          for (let i = 0; i < parent.length; i++) {
-            Member.findOneAndUpdate(
-              { member_id: parent[i] },
-              { $push: { spouse: member_id } },
-              { new: true }
-            )
-              .then((updatedMember) => {
-                console.log(updatedMember);
-              })
-              .catch((err) => console.error(err));
-            Member.findOneAndUpdate(
-              { member_id: member_id },
-              { $push: { spouse: parent[i] } },
-              { new: true }
-            )
-              .then((updatedMember) => {
-                console.log(updatedMember);
-              })
-              .catch((err) => console.error(err));
-          }
+  const parent = async () => {
+    try {
+      //update existing relatioship with new parent
+      let parent = [];
+      const result1 = await Member.findOne({ member_id: node_member_id });
+      parent = result1.parent.slice();
+      console.log(parent.length);
+
+      if (parent.length != 0) {
+        console.log("helloo");
+        for (let i = 0; i < parent.length; i++) {
+          const updatedMember1 = await Member.findOneAndUpdate(
+            { member_id: parent[i] },
+            { $push: { spouse: member_id } },
+            { new: true }
+          );
+          console.log(updatedMember1);
+
+          const updatedMember2 = await Member.findOneAndUpdate(
+            { member_id: member_id },
+            { $push: { spouse: parent[i] } },
+            { new: true }
+          );
+          console.log(updatedMember2);
         }
-      });
+      }
 
-    let sibling = [];
-    Member.findOne({ member_id: node_member_id })
-      .then((result) => {
-        sibling = result.sibling.slice();
-        console.log(sibling);
-        return sibling;
-      })
-      .then(() => {
-        if (sibling.length != 0) {
-          for (let i = 0; i < sibling.length; i++) {
-            Member.findOneAndUpdate(
-              { member_id: sibling[i] },
-              { $push: { parent: member_id } },
-              { new: true }
-            )
-              .then((updatedMember) => {
-                console.log(updatedMember);
-              })
-              .catch((err) => console.error(err));
-            Member.findOneAndUpdate(
-              { member_id: member_id },
-              { $push: { children: sibling[i] } },
-              { new: true }
-            )
-              .then((updatedMember) => {
-                console.log(updatedMember);
-              })
-              .catch((err) => console.error(err));
-          }
+      let sibling = [];
+      const result2 = await Member.findOne({ member_id: node_member_id });
+      sibling = result2.sibling.slice();
+      console.log(sibling);
+
+      if (sibling.length != 0) {
+        for (let i = 0; i < sibling.length; i++) {
+          const updatedMember3 = await Member.findOneAndUpdate(
+            { member_id: sibling[i] },
+            { $push: { parent: member_id } },
+            { new: true }
+          );
+          console.log(updatedMember3);
+
+          const updatedMember4 = await Member.findOneAndUpdate(
+            { member_id: member_id },
+            { $push: { children: sibling[i] } },
+            { new: true }
+          );
+          console.log(updatedMember4);
         }
-      });
+      }
 
-    //update parent in child data
-    Member.findOneAndUpdate(
-      { member_id: node_member_id },
-      { $push: { parent: member_id } },
-      { new: true }
-    )
-      .then((updatedMember) => {
-        console.log(updatedMember);
-      })
-      .catch((err) => console.error(err));
+      //update parent in child data
+      const updatedMember5 = await Member.findOneAndUpdate(
+        { member_id: node_member_id },
+        { $push: { parent: member_id } },
+        { new: true }
+      );
+      console.log(updatedMember5);
 
-    //update child in the parent data
-    Member.findOneAndUpdate(
-      { member_id: member_id },
-      { $push: { children: node_member_id } },
-      { new: true }
-    )
-      .then((updatedMember) => {
-        console.log(updatedMember);
-      })
-      .catch((err) => console.error(err));
+      //update child in the parent data
+      const updatedMember6 = await Member.findOneAndUpdate(
+        { member_id: member_id },
+        { $push: { children: node_member_id } },
+        { new: true }
+      );
+      console.log(updatedMember6);
 
-    //res.send("add member");
+      //res.send("add member");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const children = () => {
-    //update existing relatioship with new parent
-    let spouse = [];
-    Member.findOne({ member_id: node_member_id })
-      .then((result) => {
-        spouse = result.spouse.slice();
-        console.log(spouse.length);
-        return spouse;
-      })
-      .then(() => {
-        if (spouse.length != 0) {
-          console.log("helloo");
-          for (let i = 0; i < spouse.length; i++) {
-            Member.findOneAndUpdate(
-              { member_id: spouse[i] },
-              { $push: { children: member_id } },
-              { new: true }
-            )
-              .then((updatedMember) => {
-                console.log(updatedMember);
-              })
-              .catch((err) => console.error(err));
-            Member.findOneAndUpdate(
-              { member_id: member_id },
-              { $push: { parent: spouse[i] } },
-              { new: true }
-            )
-              .then((updatedMember) => {
-                console.log(updatedMember);
-              })
-              .catch((err) => console.error(err));
-          }
+  const children = async () => {
+    try {
+      //update existing relatioship with new parent
+      let spouse = [];
+      const result1 = await Member.findOne({ member_id: node_member_id });
+      spouse = result1.spouse.slice();
+      console.log(spouse.length);
+
+      if (spouse.length != 0) {
+        console.log("helloo");
+        for (let i = 0; i < spouse.length; i++) {
+          const updatedMember1 = await Member.findOneAndUpdate(
+            { member_id: spouse[i] },
+            { $push: { children: member_id } },
+            { new: true }
+          );
+          console.log(updatedMember1);
+
+          const updatedMember2 = await Member.findOneAndUpdate(
+            { member_id: member_id },
+            { $push: { parent: spouse[i] } },
+            { new: true }
+          );
+          console.log(updatedMember2);
         }
-      });
+      }
 
-    let children = [];
-    Member.findOne({ member_id: node_member_id })
-      .then((result) => {
-        children = result.children.slice();
-        console.log(children);
-        return children;
-      })
-      .then(() => {
-        if (children.length != 0) {
-          for (let i = 0; i < children.length; i++) {
-            Member.findOneAndUpdate(
-              { member_id: children[i] },
-              { $push: { sibling: member_id } },
-              { new: true }
-            )
-              .then((updatedMember) => {
-                console.log(updatedMember);
-              })
-              .catch((err) => console.error(err));
-            Member.findOneAndUpdate(
-              { member_id: member_id },
-              { $push: { sibling: children[i] } },
-              { new: true }
-            )
-              .then((updatedMember) => {
-                console.log(updatedMember);
-              })
-              .catch((err) => console.error(err));
-          }
+      let children = [];
+      const result2 = await Member.findOne({ member_id: node_member_id });
+      children = result2.children.slice();
+      console.log(children);
+
+      if (children.length != 0) {
+        for (let i = 0; i < children.length; i++) {
+          const updatedMember3 = await Member.findOneAndUpdate(
+            { member_id: children[i] },
+            { $push: { sibling: member_id } },
+            { new: true }
+          );
+          console.log(updatedMember3);
+
+          const updatedMember4 = await Member.findOneAndUpdate(
+            { member_id: member_id },
+            { $push: { sibling: children[i] } },
+            { new: true }
+          );
+          console.log(updatedMember4);
         }
-      });
+      }
 
-    //update parent in child data
-    Member.findOneAndUpdate(
-      { member_id: node_member_id },
-      { $push: { children: member_id } },
-      { new: true }
-    )
-      .then((updatedMember) => {
-        console.log(updatedMember);
-      })
-      .catch((err) => console.error(err));
+      //update parent in child data
+      const updatedMember5 = await Member.findOneAndUpdate(
+        { member_id: node_member_id },
+        { $push: { children: member_id } },
+        { new: true }
+      );
+      console.log(updatedMember5);
 
-    //update child in the parent data
-    Member.findOneAndUpdate(
-      { member_id: member_id },
-      { $push: { parent: node_member_id } },
-      { new: true }
-    )
-      .then((updatedMember) => {
-        console.log(updatedMember);
-      })
-      .catch((err) => console.error(err));
+      //update child in the parent data
+      const updatedMember6 = await Member.findOneAndUpdate(
+        { member_id: member_id },
+        { $push: { parent: node_member_id } },
+        { new: true }
+      );
+      console.log(updatedMember6);
 
-    //res.send("add member");
+      //res.send("add member");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const sibling = () => {
-    //update existing relatioship with new parent
-    let parent = [];
-    Member.findOne({ member_id: node_member_id })
-      .then((result) => {
-        parent = result.parent.slice();
-        console.log(parent.length);
-        return parent;
-      })
-      .then(() => {
-        if (parent.length != 0) {
-          console.log("helloo");
-          for (let i = 0; i < parent.length; i++) {
-            Member.findOneAndUpdate(
-              { member_id: parent[i] },
-              { $push: { children: member_id } },
-              { new: true }
-            )
-              .then((updatedMember) => {
-                console.log(updatedMember);
-              })
-              .catch((err) => console.error(err));
-            Member.findOneAndUpdate(
-              { member_id: member_id },
-              { $push: { parent: parent[i] } },
-              { new: true }
-            )
-              .then((updatedMember) => {
-                console.log(updatedMember);
-              })
-              .catch((err) => console.error(err));
-          }
+  const sibling = async () => {
+    try {
+      //update existing relatioship with new parent
+      let parent = [];
+      const result1 = await Member.findOne({ member_id: node_member_id });
+      parent = result1.parent.slice();
+      console.log(parent.length);
+
+      if (parent.length != 0) {
+        console.log("helloo");
+        for (let i = 0; i < parent.length; i++) {
+          const updatedMember1 = await Member.findOneAndUpdate(
+            { member_id: parent[i] },
+            { $push: { children: member_id } },
+            { new: true }
+          );
+          console.log(updatedMember1);
+
+          const updatedMember2 = await Member.findOneAndUpdate(
+            { member_id: member_id },
+            { $push: { parent: parent[i] } },
+            { new: true }
+          );
+          console.log(updatedMember2);
         }
-      });
+      }
 
-    let sibling = [];
-    Member.findOne({ member_id: node_member_id })
-      .then((result) => {
-        sibling = result.sibling.slice();
-        console.log(sibling);
-        return sibling;
-      })
-      .then(() => {
-        if (sibling.length != 0) {
-          for (let i = 0; i < sibling.length; i++) {
-            Member.findOneAndUpdate(
-              { member_id: sibling[i] },
-              { $push: { sibling: member_id } },
-              { new: true }
-            )
-              .then((updatedMember) => {
-                console.log(updatedMember);
-              })
-              .catch((err) => console.error(err));
-            Member.findOneAndUpdate(
-              { member_id: member_id },
-              { $push: { sibling: sibling[i] } },
-              { new: true }
-            )
-              .then((updatedMember) => {
-                console.log(updatedMember);
-              })
-              .catch((err) => console.error(err));
-          }
+      let sibling = [];
+      const result2 = await Member.findOne({ member_id: node_member_id });
+      sibling = result2.sibling.slice();
+      console.log(sibling);
+
+      if (sibling.length != 0) {
+        for (let i = 0; i < sibling.length; i++) {
+          const updatedMember3 = await Member.findOneAndUpdate(
+            { member_id: sibling[i] },
+            { $push: { sibling: member_id } },
+            { new: true }
+          );
+          console.log(updatedMember3);
+
+          const updatedMember4 = await Member.findOneAndUpdate(
+            { member_id: member_id },
+            { $push: { sibling: sibling[i] } },
+            { new: true }
+          );
+          console.log(updatedMember4);
         }
-      });
+      }
 
-    //update parent in child data
-    Member.findOneAndUpdate(
-      { member_id: node_member_id },
-      { $push: { sibling: member_id } },
-      { new: true }
-    )
-      .then((updatedMember) => {
-        console.log(updatedMember);
-      })
-      .catch((err) => console.error(err));
+      //update parent in child data
+      const updatedMember5 = await Member.findOneAndUpdate(
+        { member_id: node_member_id },
+        { $push: { sibling: member_id } },
+        { new: true }
+      );
+      console.log(updatedMember5);
 
-    //update child in the parent data
-    Member.findOneAndUpdate(
-      { member_id: member_id },
-      { $push: { sibling: node_member_id } },
-      { new: true }
-    )
-      .then((updatedMember) => {
-        console.log(updatedMember);
-      })
-      .catch((err) => console.error(err));
+      //update child in the parent data
+      const updatedMember6 = await Member.findOneAndUpdate(
+        { member_id: member_id },
+        { $push: { sibling: node_member_id } },
+        { new: true }
+      );
+      console.log(updatedMember6);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const spouse = () => {
-    //update existing relatioship with new parent
-    let children = [];
-    Member.findOne({ member_id: node_member_id })
-      .then((result) => {
-        children = result.relationship.children.slice();
-        console.log(children.length);
-        return children;
-      })
-      .then(() => {
-        if (children.length != 0) {
-          console.log("helloo");
-          for (let i = 0; i < children.length; i++) {
-            Member.findOneAndUpdate(
-              { member_id: children[i] },
-              { $push: { parent: member_id } },
-              { new: true }
-            )
-              .then((updatedMember) => {
-                console.log(updatedMember);
-              })
-              .catch((err) => console.error(err));
-            Member.findOneAndUpdate(
-              { member_id: member_id },
-              { $push: { children: children[i] } },
-              { new: true }
-            )
-              .then((updatedMember) => {
-                console.log(updatedMember);
-              })
-              .catch((err) => console.error(err));
-          }
+  const spouse = async () => {
+    try {
+      //update existing relatioship with new parent
+      let children = [];
+      const result1 = await Member.findOne({ member_id: node_member_id });
+      children = result1.children.slice();
+      console.log(children.length);
+
+      if (children.length != 0) {
+        console.log("helloo");
+        for (let i = 0; i < children.length; i++) {
+          const updatedMember1 = await Member.findOneAndUpdate(
+            { member_id: children[i] },
+            { $push: { parent: member_id } },
+            { new: true }
+          );
+          console.log(updatedMember1);
+
+          const updatedMember2 = await Member.findOneAndUpdate(
+            { member_id: member_id },
+            { $push: { children: children[i] } },
+            { new: true }
+          );
+          console.log(updatedMember2);
         }
-      });
+      }
 
-    //update parent in child data
-    Member.findOneAndUpdate(
-      { member_id: node_member_id },
-      { $push: { spouse: member_id } },
-      { new: true }
-    )
-      .then((updatedMember) => {
-        console.log(updatedMember);
-      })
-      .catch((err) => console.error(err));
+      //update parent in child data
+      const updatedMember3 = await Member.findOneAndUpdate(
+        { member_id: node_member_id },
+        { $push: { spouse: member_id } },
+        { new: true }
+      );
+      console.log(updatedMember3);
 
-    //update child in the parent data
-    Member.findOneAndUpdate(
-      { member_id: member_id },
-      { $push: { spouse: node_member_id } },
-      { new: true }
-    )
-      .then((updatedMember) => {
-        console.log(updatedMember);
-      })
-      .catch((err) => console.error(err));
+      //update child in the parent data
+      const updatedMember4 = await Member.findOneAndUpdate(
+        { member_id: member_id },
+        { $push: { spouse: node_member_id } },
+        { new: true }
+      );
+      console.log(updatedMember4);
+    } catch (err) {
+      console.error(err);
+    }
   };
+
   res.send("add member");
 };
 
