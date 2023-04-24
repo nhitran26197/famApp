@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "../components/Navbar";
 import { Wrapper } from "@googlemaps/react-wrapper";
-import MapComponent from "../components/MapPosts";
+import { MapComponent } from "../components/MapPosts";
 import Tree from "../components/Tree";
 
 export default function Dashboard() {
@@ -27,7 +27,11 @@ export default function Dashboard() {
           <Tree />
         </div>
         <div>
-          <Wrapper apiKey={"AIzaSyCecWQ01w2hL3sX2XNdjBVsL0KA9Yln4Hs"}>
+          <Wrapper
+            apiKey={"AIzaSyCecWQ01w2hL3sX2XNdjBVsL0KA9Yln4Hs"}
+            version="beta"
+            libraries={["marker"]}
+          >
             <MapComponent />
           </Wrapper>
         </div>
