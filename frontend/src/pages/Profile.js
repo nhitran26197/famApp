@@ -1,175 +1,171 @@
-import { UserCircleIcon } from "@heroicons/react/24/solid";
+//profile page
+import React, { Component } from "react";
 import NavBar from "../components/Navbar";
+import TimeLineLogic from "../components/TimeLineLogic";
+import BucketList from "../components/bucketListCard";
+import "../css/Profile.css";
+//import familypage from "../familyimage.jpeg";
+import AddGoal from "../components/addGoal";
+import AddTime from "../components/addTime";
+
+const bucketListItems = [
+  {
+    id: 1,
+    title: "Visit the Grand Canyon",
+    description:
+      "Experience the natural beauty of one of America's most iconic landmarks.",
+    location: "Arizona, USA",
+  },
+  {
+    id: 2,
+    title: "Learn to surf",
+    description:
+      "Ride the waves like a pro and experience the thrill of surfing.",
+    location: "Hawaii, USA",
+  },
+  {
+    id: 3,
+    title: "Go on a safari",
+    description:
+      "Experience the thrill of seeing wild animals in their natural habitat.",
+    location: "Kenya, Africa",
+  },
+];
+
+const items = [
+  {
+    title: "Go to the moon",
+    description: "I want to go to the moon",
+    location: "Moon",
+  },
+  {
+    title: "Go to the moon",
+    description: "I want to go to the moon",
+    location: "Moon",
+  },
+];
 
 export default function Profile() {
   return (
     <>
-      <NavBar></NavBar>
-      <h2 className="text-base font-semibold leading-7 text-gray-900 text-3xl ml-36 mt-20">
-        Profile
-      </h2>
-
       <div>
-        <div
-          style={{
-            display: "flex",
-          }}
-        >
-          <form>
-            <div className="flex flex-row">
-              <div
-                style={{
-                  width: "500px",
-                  height: "500px",
-                  borderRadius: "20px",
-                  marginLeft: "150px",
-                }}
-              >
-                <p className="mt-1 text-sm leading-6 text-gray-600"></p>
-
-                <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                  <div className="sm:col-span-3">
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Name
-                    </label>
-                    <div className="mt-2">
-                      <input
-                        type="text"
-                        name="name"
-                        id="name"
-                        className="block w-full border-gray-300 rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
+        <div>
+          <NavBar></NavBar>
+        </div>
+        <link
+          rel="stylesheet"
+          href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
+        />
+        <link
+          rel="stylesheet"
+          href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+        />
+        <div>
+          <section class="relative block h-500-px profile-header">
+            <div class="absolute top-0 w-full h-full bg-center bg-cover">
+              <span
+                id="blackOverlay"
+                class="w-full h-full absolute opacity-50 bg-black"
+              ></span>
+            </div>
+            <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px">
+              {/* <img
+            src="../familyimage.jpeg"
+            alt="..."
+        
+          /> */}
+              {/* <svg
+            class="absolute bottom-0 overflow-hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            version="1.1"
+            viewBox="0 0 2560 100"
+            x="0"
+            y="0"
+          >
+            <polygon
+              class="text-blueGray-200 fill-current"
+              points="2560 0 2560 100 0 100"
+            ></polygon>
+          </svg> */}
+            </div>
+          </section>
+        </div>
+        <div>
+          <section class="">
+            <div class="mx-auto px-20">
+              <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-60">
+                <div>
+                  <div class="flex flex-wrap justify-center">
+                    <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
+                      <div class="relative">
+                        <img
+                          alt="..."
+                          src="https://demos.creative-tim.com/notus-js/assets/img/team-2-800x800.jpg"
+                          class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
+                        />
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="sm:col-span-3">
-                    <label
-                      htmlFor="last-name"
-                      className="block text-sm font-medium leading-6 text-gray-900"
+                    <div class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
+                      <div class="py-12 px-3 mt-32 sm:mt-0">
+                        {/* <button
+                      class="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+                      type="button"
                     >
-                      Age
-                    </label>
-                    <div className="mt-2">
-                      <input
-                        type="text"
-                        name="age"
-                        id="age"
-                        className="block w-full border-gray-300 rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
+                      Connect
+                    </button> */}
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="sm:col-span-4">
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Email address
-                    </label>
-                    <div className="mt-2">
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        autoComplete="email"
-                        className="block w-full border-gray-300 rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
+                    <div class="w-full lg:w-4/12 px-4 lg:order-1">
+                      <div class="flex justify-center py-4 lg:pt-4 pt-8">
+                        {/* <div class="mr-4 p-3 text-center">
+                      <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                        22
+                      </span>
+                      <span class="text-sm text-blueGray-400">Friends</span>
                     </div>
-                  </div>
-                  <div className="sm:col-span-4">
-                    <label
-                      htmlFor="username"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Username
-                    </label>
-                    <div>
-                      <input
-                        type="text"
-                        name="username"
-                        id="username"
-                        autoComplete="username"
-                        className="block w-full border-gray-300  rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        placeholder="janesmith"
-                      />
+                    <div class="mr-4 p-3 text-center">
+                      <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                        10
+                      </span>
+                      <span class="text-sm text-blueGray-400">Photos</span>
                     </div>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                style={{
-                  width: "500px",
-                  height: "500px",
-                  borderRadius: "20px",
-                  marginLeft: "150px",
-                }}
-              >
-                <div className="space-y-12">
-                  <div>
-                    <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                      <div className="col-span-full">
-                        <label
-                          htmlFor="cover-photo"
-                          className="block text-sm font-medium leading-6 text-gray-900"
-                        >
-                          Profile picture
-                        </label>
-                        <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                          <div className="text-center">
-                            {/* <PhotoIcon
-                        className="mx-auto h-12 w-12 text-gray-300"
-                        aria-hidden="true"
-                      /> */}
-                            <UserCircleIcon
-                              className="mx-auto h-24 w-24 text-gray-300"
-                              aria-hidden="true"
-                            />
-                            <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                              <label
-                                htmlFor="file-upload"
-                                className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                              >
-                                <span>Upload a file</span>
-                                <input
-                                  id="file-upload"
-                                  name="file-upload"
-                                  type="file"
-                                  className="sr-only"
-                                />
-                              </label>
-                              <p className="pl-1">or drag and drop</p>
-                            </div>
-                            <p className="text-xs leading-5 text-gray-600">
-                              PNG, JPG, GIF up to 10MB
-                            </p>
-                          </div>
-                        </div>
+                    <div class="lg:mr-4 p-3 text-center">
+                      <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                        89
+                      </span>
+                      <span class="text-sm text-blueGray-400">Comments</span>
+                    </div> */}
                       </div>
                     </div>
                   </div>
+                  <div class="text-center mt-12">
+                    <h3 class="text-4xl font-semibold leading-normal text-blueGray-700 mb-4">
+                      Jenna Stones
+                    </h3>
+                  </div>
                 </div>
               </div>
             </div>
-
-            <div className="mt-6 flex items-center justify-end gap-x-6">
-              <button
-                type="button"
-                className="text-sm font-semibold leading-6 text-gray-900"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Save
-              </button>
+          </section>
+        </div>
+        <div>
+          <div class="flex place-content-around">
+            <div class="mt-8">
+              <AddGoal />
             </div>
-          </form>
+            <div class="mt-8">
+              <AddTime />
+            </div>
+          </div>
+          <div className="grid grid-cols-2 place-content-stretch">
+            <div className="content flex justify-center p-8">
+              <BucketList items={bucketListItems} />
+            </div>
+            <div className="content flex justify-center p-8 place-self-start ml-20">
+              <TimeLineLogic items={items} />
+            </div>
+          </div>
         </div>
       </div>
     </>
