@@ -1,13 +1,13 @@
 import "../css/Profile.css";
 import React from "react";
 
-function AddGoal(props) {
+function AddTime(props) {
   return (
     <button className="button text-blueGray-700" onClick={props.onClick}>
       {props.label}
-      Add Goal
+      Add Event
     </button>
   );
 }
 
-export default AddGoal;
+export default AddTime;
