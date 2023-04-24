@@ -1,7 +1,6 @@
 const Member = require("../models/member");
 
 const getTree = (req, res) => {
-  let arr = [];
   let data = [];
 
   Member.find({})
@@ -34,9 +33,7 @@ const getTree = (req, res) => {
           })
         }
         if (item.siblings.length > 0) {
-          console.log("huhhh")
           console.log(item.siblings.length)
-          console.log("byeee")
           item.siblings.map((sibling) => {
             obj.siblings.push({"id":sibling.id,"type":"blood"});
           })
