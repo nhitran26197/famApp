@@ -1,6 +1,5 @@
 //import schemas of the user and members
 const User = require('../models/user');
-const bcrypt = require("bcrypt");
 
 const users = (req, res) => {
     User.find({}, (err, userData) => {
@@ -30,45 +29,17 @@ const login = (req, res) => {
         console.log("fugma");
         console.log(password);
         if (userData) {
-        //console.log(userData.password);
-        console.log(password);
-        bcrypt.compare(password, userData.password, (err, result) => {
-            console.log(result);
-        });
-        bcrypt.compare(password, userData.password, (err, result) => {
-            if (err) {
-              console.log(err);
-              return;
-            }
-            if(result)
-            {
-                console.log("login successful");
+            if (userData.password === password) {
                 res.status(200).send();
             }
-            else
-            {
-                console.log("Wrong password");
+            else {
                 res.status(400).send();
             }
-            console.log('Password match:', result);
-          });
-
-            // if (userData.password === password) {
-            //     //console.log("login successful");
-            //     res.status(200).send();
-            // }
-            // else {
-            //     //console.log("Wrong password");
-            //     res.status(400).send();
-            // }
         }
         else
         {
             console.log("username doesnt exist");
             res.status(404).send();
-            console.log("asdfa");
-            //res.json({message: "username doesnt exist CUH"});
-            //return;
         }
     }
     );

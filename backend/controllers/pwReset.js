@@ -1,51 +1,8 @@
 const User = require('../models/user');
-//const sendEmail = require('../controllers/sendEmail');
+
 const nodeMailer = require('nodemailer');
-// const User = require('../models/user');
-const bcrypt = require("bcrypt");
-const bcryptSalt = process.env.BCRYPT_SALT;
+
 const mongoose = require("mongoose");
-
-// const changepw = async (req, res) => {
-//     try {
-//     //user input
-//     //console.log(req.body);
-//     const { newPassword } = req.body;
-//     console.log(newPassword);
-//     console.log(userEmail);
-
-//     //salt and hash new password
-//     let hash = await bcrypt.hash(newPassword, Number(bcryptSalt));
-//     //newPassword = hash;
-//     console.log(newPassword);
-//     console.log("PASSWORD ABOVE IS OLD BELOW IS HASH");
-//     //update password in user document
-//     console.log(hash);
-//     //console.log("working before update");
-//     //save updated user document
-//     User.updateOne({email: userEmail},
-//         { $set: { password: hash } }, function (err, pw) {
-//             if (err){
-//                 console.log("Error updating PW");
-//                 console.log(err);
-//                 res.status(500).send();
-//             }
-//             else{
-//                 //console.log("Updated PW for user: ", this.member_id);
-//                 res.status(200).send();
-//             }
-//         }
-//     );
-//     User.find({email: userEmail}, (err, userData) => {
-//         console.log(userData);
-//     });
-//     } catch (error)
-//     {
-//         console.log(error);
-//     }
-//     //console.log("working after update");
-
-// };
 
 
 const sendEmail = async () => {
