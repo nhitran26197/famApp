@@ -18,17 +18,17 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
+        {/* <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} /> */}
         <Route path="/feedpage" element={<Feedpage />} />
-        <Route path="/bucket" element={<BucketList />} />
+        {/* <Route path="/bucket" element={<BucketList />} />
         <Route path="/profilepage" element={<ProfilePage />} />
         <Route path="/timeline" element={<TimelineDisplay />} />
-        <Route path="/reset-password" element={<Forgot />} />
+        <Route path="/reset-password" element={<Forgot />} /> */}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
