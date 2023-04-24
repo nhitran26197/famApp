@@ -14,7 +14,7 @@ export default function Dashboard() {
   //   lng: -122.4194,
   // };
   // const zoom = 13;
-  const [nodes, setNodes] = useState(newtree);
+  const [nodes, setNodes] = useState(null);
   useEffect(() => {
     console.log("fetching");
     fetch("http://localhost:3030/gettree")
@@ -42,7 +42,7 @@ export default function Dashboard() {
           <div className="flex justify-center">
             <h1 className=" text-2xl font-bold">Family Tree</h1>
           </div>
-          <Tree shape={nodes} />
+          {nodes ?<Tree shape={nodes} /> : <div>loading</div>}
         </div>
         <div>
           <Wrapper

@@ -11,9 +11,6 @@ export default function Tree({ shape }) {
   const [firstNodeId, setFirstNodeId] = useState(nodes[0].id);
   const [rootId, setRootId] = useState(firstNodeId);
 
-  useEffect(() => {
-    console.log(nodes)},[nodes]);
-
 
   return (
     <div>
