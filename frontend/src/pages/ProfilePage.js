@@ -4,7 +4,6 @@ import NavBar from "../components/Navbar";
 import TimeLineLogic from "../components/TimeLineLogic";
 import BucketList from "../components/bucketListCard";
 import "../css/Profile.css";
-//import familypage from "../familyimage.jpeg";
 import AddGoal from "../components/addGoal";
 import AddTime from "../components/addTime";
 
@@ -68,27 +67,6 @@ export default function Profile() {
                 class="w-full h-full absolute opacity-50 bg-black"
               ></span>
             </div>
-            <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px">
-              {/* <img
-            src="../familyimage.jpeg"
-            alt="..."
-        
-          /> */}
-              {/* <svg
-            class="absolute bottom-0 overflow-hidden"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            version="1.1"
-            viewBox="0 0 2560 100"
-            x="0"
-            y="0"
-          >
-            <polygon
-              class="text-blueGray-200 fill-current"
-              points="2560 0 2560 100 0 100"
-            ></polygon>
-          </svg> */}
-            </div>
           </section>
         </div>
         <div>
@@ -107,37 +85,9 @@ export default function Profile() {
                       </div>
                     </div>
                     <div class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
-                      <div class="py-12 px-3 mt-32 sm:mt-0">
-                        {/* <button
-                      class="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
-                      type="button"
-                    >
-                      Connect
-                    </button> */}
-                      </div>
+                      <div class="py-12 px-3 mt-32 sm:mt-0"></div>
                     </div>
-                    <div class="w-full lg:w-4/12 px-4 lg:order-1">
-                      <div class="flex justify-center py-4 lg:pt-4 pt-8">
-                        {/* <div class="mr-4 p-3 text-center">
-                      <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                        22
-                      </span>
-                      <span class="text-sm text-blueGray-400">Friends</span>
-                    </div>
-                    <div class="mr-4 p-3 text-center">
-                      <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                        10
-                      </span>
-                      <span class="text-sm text-blueGray-400">Photos</span>
-                    </div>
-                    <div class="lg:mr-4 p-3 text-center">
-                      <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                        89
-                      </span>
-                      <span class="text-sm text-blueGray-400">Comments</span>
-                    </div> */}
-                      </div>
-                    </div>
+                    <div class="w-full lg:w-4/12 px-4 lg:order-1"></div>
                   </div>
                   <div class="text-center mt-12">
                     <h3 class="text-4xl font-semibold leading-normal text-blueGray-700 mb-4">
@@ -149,20 +99,20 @@ export default function Profile() {
             </div>
           </section>
         </div>
-        <div>
-          <div class="flex place-content-around">
-            <div class="mt-8">
+        <div class="flex">
+          <div class="w-2/4">
+            <div class="flex justify-center p-6">
               <AddGoal />
             </div>
-            <div class="mt-8">
-              <AddTime />
-            </div>
-          </div>
-          <div className="grid grid-cols-2 place-content-stretch">
-            <div className="content flex justify-center p-8">
+            <div class="flex justify-center">
               <BucketList items={bucketListItems} />
             </div>
-            <div className="content flex justify-center p-8 place-self-start ml-20">
+          </div>
+          <div class=" w-2/4">
+            <div class="flex justify-center p-6">
+              <AddTime />
+            </div>
+            <div class="flex justify-center">
               <TimeLineLogic items={items} />
             </div>
           </div>
