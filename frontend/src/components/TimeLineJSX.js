@@ -1,14 +1,14 @@
 import React from "react";
 
 const TimeLineJSX = ({ items }) => {
-  //console.log(items);
+  console.log(items);
   return (
     <>
       <div>
         <ol>
-          <li class="border-l-2 border-darkteal">
+          <li class="border-l-2 border-green">
             <div class="md:flex">
-              <div class="bg-darkteal w-6 h-6 flex items-center justify-center rounded-full -ml-3.5">
+              <div class="bg-green w-6 h-6 flex items-center justify-center rounded-full -ml-3.5">
                 <svg
                   aria-hidden="true"
                   focusable="false"
