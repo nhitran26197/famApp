@@ -1,7 +1,7 @@
 import React from "react";
 
 const TimeLineJSX = ({ items }) => {
-  console.log(items);
+  //console.log(items);
   return (
     <>
       <div>
