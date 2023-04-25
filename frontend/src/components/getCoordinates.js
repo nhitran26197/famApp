@@ -49,10 +49,9 @@ const MapComponent = memo(function MapComponent({
   return (
     <div
       style={{
-        width: "500px",
+        width: "450px",
         height: "300px",
-        marginLeft: "50px",
-        marginTop: "50px",
+        borderRadius: "10px",
       }}
       ref={ref}
       id="map"

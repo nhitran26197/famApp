@@ -67,11 +67,12 @@ export default function Example() {
   return (
     <div
       style={{
-        //width: "500px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        marginLeft: "40px",
+        marginRight: "40px",
       }}
     >
       <div>
@@ -118,9 +119,6 @@ export default function Example() {
                       onChange={(e) => setCaption(e.target.value)}
                     />
                   </div>
-                  <p className="mt-3 text-sm leading-6 text-gray-600">
-                    What is the memory?
-                  </p>
                 </div>
               </div>
             </div>
@@ -163,7 +161,9 @@ export default function Example() {
               </div>
             </div>
           </div>
-          <button type="submit">Add Photo</button>
+          <div className="flex justify-center mt-4">
+          <button className="bg-green-300 hover:bg-gray-100 text-neutral-900 font-semibold py-2 px-4 border border-gray-400 rounded " type="submit">Add Photo</button>
+          </div>
         </form>
         <div>
           <img src={picture}></img>
@@ -171,31 +171,30 @@ export default function Example() {
       </div>
 
       <div>
-        <Map refLat={refLat} refLng={refLng} />
-        <button
-          onClick={() => {
-            setLocation_lat(refLat.current);
-            setLocation_long(refLng.current);
-            console.log(refLat.current);
-            console.log(refLng.current);
-          }}
-        >
-          Get Location
-        </button>
+        <div className="mt-6">
+          <Map refLat={refLat} refLng={refLng} />
+        </div>
+        <div className="flex flex-col items-center justify-center">
+          <button
+            className="bg-white mt-4 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded"
+            onClick={() => {
+              setLocation_lat(refLat.current);
+              setLocation_long(refLng.current);
+              console.log(refLat.current);
+              console.log(refLng.current);
+            }}
+          >
+            Get Location
+          </button>
 
-        <button
-          type="submit"
-          style={{
-            marginTop: "20px",
-            backgroundColor: "#f1dede",
-            color: "black",
-            padding: "10px 20px",
-            borderRadius: "5px",
-          }}
-          onClick={submitPost}
-        >
-          Submit Post
-        </button>
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-9 rounded mt-4"
+            onClick={submitPost}
+          >
+            Submit
+          </button>
+        </div>
       </div>
     </div>
   );
