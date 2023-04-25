@@ -8,13 +8,14 @@ const User = require("../models/user");
 
 
 const eup = (req, res) => {
+    console.log("eup is being called");
     const { localusername, usernameInput, emailInput, ageInput, nameInput} = req.body;
     //console.log(req.params);
     //console.log(req);
     //console.log(localusername);
     //console.log(localemail);
     // username: juangamez
-    User.updateOne({username: localusername },
+    User.findOneAndUpdate({username: localusername },
         { $set: { email: emailInput, username: usernameInput} }, function (err, pw) {
             if (err){
                 console.log("Error updating");
@@ -25,28 +26,29 @@ const eup = (req, res) => {
                 console.log(pw);
                 //localStorage.setItem("user", usernameInput);
                 //localStorage.setItem("email", emailInput);
-                console.log("Updated Email for user: ", this.username);
+                console.log("Updated Email for user");
+                res.send(pw);
                 res.status(200).send();
             }
         }
     )
 
-    Member.updateOne({account: localusername },
-        { $set: { age: ageInput, name: nameInput, account: usernameInput} }, function (err, pw) {
-            if (err){
-                console.log("Error updating");
-                console.log(err);
-                res.status(500).send();
-            }
-            else{
-                console.log(pw);
-                //localStorage.setItem("user", usernameInput);
-                //localStorage.setItem("email", emailInput);
-                console.log("Update AGE AND NAME for member: ", this.username);
-                res.status(200).send();
-            }
-        }
-    )
+    // Member.findOneAndUpdate({account: localusername },
+    //     { $set: { age: ageInput, name: nameInput, account: usernameInput} }, function (err, pw) {
+    //         if (err){
+    //             console.log("Error updating");
+    //             console.log(err);
+    //             res.status(500).send();
+    //         }
+    //         else{
+    //             console.log(pw);
+    //             //localStorage.setItem("user", usernameInput);
+    //             //localStorage.setItem("email", emailInput);
+    //             console.log("Update AGE AND NAME for member: ", this.username);
+    //             res.status(200).send();
+    //         }
+    //     }
+    // )
     console.log("working after update");
 
 }
