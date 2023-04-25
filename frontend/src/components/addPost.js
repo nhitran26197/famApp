@@ -176,13 +176,13 @@ export default function Example() {
         </div>
         <div className="flex flex-col items-center justify-center">
           <button
-            className="bg-white mt-4 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded"
             onClick={() => {
               setLocation_lat(refLat.current);
               setLocation_long(refLng.current);
               console.log(refLat.current);
               console.log(refLng.current);
             }}
+            className="bg-white mt-4 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded"
           >
             Get Location
           </button>
