@@ -12,6 +12,7 @@ import BucketList from "./pages/Bucket";
 import ProfilePage from "./pages/ProfilePage";
 import TimelineDisplay from "./pages/TimelineDisplay";
 import Forgot from "./pages/ResetPage";
+import Eventpage from "./pages/Eventpage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,6 +23,7 @@ root.render(
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/event" element={<Eventpage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/feedpage" element={<Feedpage />} />
