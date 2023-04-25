@@ -17,14 +17,14 @@ const Register = () => {
   };
 
   const handleRegister = async (e) => {
+    const name = firstName + " " + lastName;
     e.preventDefault();
     axios
       .post("http://localhost:3030/signup", {
         username: username,
         password: password,
         email: email,
-        firstName: firstName,
-        lastName: lastName,
+        name: name,
         age: age,
       })
       .then((res) => {

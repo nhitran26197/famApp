@@ -60,10 +60,11 @@ const Login = () => {
       })
       .then((res) => {
         if(res.status === 200){
-          //console.log(res.data);
+          console.log(res.data);
           console.log(res.data[0].age);
           console.log(res.data[0].name);
-          console.log(res.data[0].email);
+          //console.log(res.data[0].email);
+          console.log(res.data[0].member_id);
           console.log(res.data['_doc'].username);
           console.log(res.data['_doc'].email);
           sessionStorage.setItem('age', res.data[0].age);

@@ -9,6 +9,7 @@ import axios from 'axios';
 export default function Profile() {
   
   const local_username = sessionStorage.getItem("username", );
+  console.log(local_username);
   const local_email = sessionStorage.getItem("email", );
   const local_name = sessionStorage.getItem("name",);
   const local_age = sessionStorage.getItem("age",);
@@ -25,12 +26,29 @@ export default function Profile() {
   }
   
   const refreshPage = async (e) => {
+    if(username === "") {
+      console.log("username is empty");
+      setUsername(local_username);
+    }
+    if(email === "") {
+      setEmail(local_email);
+    }
+    if(name === "") {
+      setName(local_name);
+    }
+    if(age === null) {
+      setAge(local_age);
+    }
+    console.log(username);
     e.preventDefault();
     console.log("refreshing page in frontend start of refreshPage");
     axios
         .post("http://localhost:3030/eup",
         {
           localusername: local_username,
+          local_age: local_age,
+          local_email: local_email,
+          local_name: local_name,
           usernameInput: username,
           emailInput: email,
           ageInput: age,
@@ -38,16 +56,15 @@ export default function Profile() {
         })
         .then((res) => {
           console.log(res);
-          console.log(res[username]);
-          console.log(res[email]);
-          //console.log("made it back to frontend");
-          //console.log(res.data['0'].account);
-          //console.log(res.data['0'].member_id);
-          //console.log(res.data['_doc'].username);
-          //console.log(res.data['_doc'].email);
-          //set my session storage to new values from json
-          //sessionStorage.setItem("username", res.data].username);
-          //sessionStorage.setItem("email", res.data['_doc'].email);
+          // console.log(res[username]);
+          // console.log(res[email]);
+          // console.log("made it back to frontend");
+          // console.log(res.data['0'].account);
+          // console.log(res.data['0'].member_id);
+          // console.log(res.data['_doc'].username);
+          // console.log(res.data['_doc'].email);
+          // sessionStorage.setItem("username", res.data.username);
+          // sessionStorage.setItem("email", res.data['_doc'].email);
 
           //window.location.reload();
         })

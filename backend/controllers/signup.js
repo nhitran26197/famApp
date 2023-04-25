@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 const signUp = async (req, res) => {
     //user input
-    const { username, password, email, bucket_list, post, member_id } = req.body;
+    const { username, password, email, name, age, bucket_list, post, member_id } = req.body;
     console.log(username);
     let exitCondition = 0;
 
@@ -23,6 +23,8 @@ const signUp = async (req, res) => {
       const new_Member = new Member({
         member_id: estimate,
         account: username,
+        name: name,
+        age: age,
         picture: "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
       });
       //new_User.save();
