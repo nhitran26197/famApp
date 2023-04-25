@@ -2,8 +2,8 @@
 
 export function getNodeStyle({ left, top }){
   return {
-    width: 200,
-    height: 200,
-    transform: `translate(${left * (200/ 2)}px, ${top * (200 / 2)}px)`,
+    width: 160,
+    height: 160,
+    transform: `translate(${left * (160/ 2)}px, ${top * (160 / 2)}px)`,
   };
 }

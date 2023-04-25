@@ -26,8 +26,8 @@ export default function Tree({ shape }) {
             <ReactFamilyTree
               nodes={nodes}
               rootId={rootId}
-              width={200}
-              height={200}
+              width={160}
+              height={160}
               className={css.tree}
               renderNode={(node) => (
                 <FamilyNode

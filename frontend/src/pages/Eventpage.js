@@ -56,9 +56,9 @@ function Eventpage() {
                 </div>
               );
             })}
-          <div className="add-post-button">
+          {/* <div className="add-post-button">
             <AddPostModal opened={false} className="button1" />
-          </div>
+          </div> */}
         </div>
         <div>
           <Wrapper

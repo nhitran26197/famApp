@@ -4,7 +4,7 @@ const Post = require("../models/posts");
 
 const posting = (req, res) => {
   let request = req.body;
-  let member_id = req.member_id;
+  let member_id = request.member_id;
   let caption = request.caption;
   let pic = request.picture;
   let coords = [request.location_long, request.location_lat];
