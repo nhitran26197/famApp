@@ -4,6 +4,10 @@ import { Link, useNavigate} from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import axios from 'axios';
 const Login = () => {
+  // let lsEmail = localStorage.getItem('email');
+  // let lsUser = localStorage.getItem('user');
+  // let lsAge = localStorage.getItem('age');
+  // let lsName = localStorage.getItem('name');
 
   //route to dashboard
   const routeToDashBoard = (e) => {
@@ -20,8 +24,10 @@ const Login = () => {
     setUser(userObject);
     document.getElementById('signInDiv').hidden = true;
     localStorage.setItem('user', userObject.name);
-    localStorage.setItem('email', userObject.email);
-  }
+    //localStorage.setItem('email', userObject.email);
+    localStorage.setItem('member_id', userObject.member_id);
+    //localStorage.setItem('username', userObject.username);
+    }
 
  
 
@@ -54,8 +60,18 @@ const Login = () => {
       })
       .then((res) => {
         if(res.status === 200){
-          localStorage.setItem('user', res.data.name);
-          localStorage.setItem('email', res.data.email);
+          //console.log(res.data);
+          console.log(res.data[0].age);
+          console.log(res.data[0].name);
+          console.log(res.data[0].email);
+          console.log(res.data['_doc'].username);
+          console.log(res.data['_doc'].email);
+          sessionStorage.setItem('age', res.data[0].age);
+          sessionStorage.setItem('name', res.data[0].name);
+          sessionStorage.setItem('member_id', res.data[0].member_id);
+          sessionStorage.setItem('username', res.data['_doc'].username);
+          sessionStorage.setItem('email', res.data['_doc'].email);
+          console.log("logged in");
           navigate('/dashboard');
         }
       })

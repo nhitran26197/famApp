@@ -1,9 +1,72 @@
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import NavBar from "../components/Navbar";
+import React, { useState, useEffect } from 'react';
+//import styles from '../css/login.module.css';
+import { Link, useNavigate} from 'react-router-dom';
+//import jwt_decode from 'jwt-decode';
+import axios from 'axios';
 
 export default function Profile() {
-  return (
+  
+  const local_username = sessionStorage.getItem("username", );
+  const local_email = sessionStorage.getItem("email", );
+  const local_name = sessionStorage.getItem("name",);
+  const local_age = sessionStorage.getItem("age",);
+  const [username, setUsername] = useState("");
+  const [age, setAge] = useState();
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+
+  let navigate = useNavigate();
+
+  const routeToUdpatedPage = (e) => {
+    e.preventDefault();
+    navigate('/profile');
+  }
+  
+  const refreshPage = async (e) => {
+    e.preventDefault();
+    console.log("refreshing page in frontend start of refreshPage");
+    axios
+        .post("http://localhost:3030/eup",
+        {
+          localusername: local_username,
+          usernameInput: username,
+          emailInput: email,
+          ageInput: age,
+          nameInput: name, 
+        })
+        .then((res) => {
+          console.log(res);
+          console.log(res[username]);
+          console.log(res[email]);
+          //console.log("made it back to frontend");
+          //console.log(res.data['0'].account);
+          //console.log(res.data['0'].member_id);
+          //console.log(res.data['_doc'].username);
+          //console.log(res.data['_doc'].email);
+          //set my session storage to new values from json
+          //sessionStorage.setItem("username", res.data].username);
+          //sessionStorage.setItem("email", res.data['_doc'].email);
+
+          //window.location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+  }
+  // axios
+  //   .post("http://localhost:3030/eup", {
+  //     localusername: local_username,
+  //     usernameInput: username,
+  //     emailInput: email,
+  //     ageInput: age,
+  //     nameInput: name,
+  //   })
+      
+   return (
     <>
+
       <NavBar></NavBar>
       <h2 className="text-base font-semibold leading-7 text-gray-900 text-3xl ml-36 mt-20">
         Profile
@@ -37,6 +100,8 @@ export default function Profile() {
                     </label>
                     <div className="mt-2">
                       <input
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder= {local_name}
                         type="text"
                         name="name"
                         id="name"
@@ -54,6 +119,8 @@ export default function Profile() {
                     </label>
                     <div className="mt-2">
                       <input
+                        onChange={(e) => setAge(e.target.value)}
+                        placeholder= {local_age}
                         type="text"
                         name="age"
                         id="age"
@@ -71,9 +138,12 @@ export default function Profile() {
                     </label>
                     <div className="mt-2">
                       <input
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder= {local_email}
+                        type = "text"
                         id="email"
                         name="email"
-                        type="email"
+                        //type="email"
                         autoComplete="email"
                         className="block w-full border-gray-300 rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
@@ -88,12 +158,14 @@ export default function Profile() {
                     </label>
                     <div>
                       <input
+                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder= {local_username}
                         type="text"
                         name="username"
                         id="username"
                         autoComplete="username"
                         className="block w-full border-gray-300  rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        placeholder="janesmith"
+                        //placeholder="janesmith"
                       />
                     </div>
                   </div>
@@ -163,6 +235,7 @@ export default function Profile() {
                 Cancel
               </button>
               <button
+                onClick={refreshPage}
                 type="submit"
                 className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
@@ -173,5 +246,5 @@ export default function Profile() {
         </div>
       </div>
     </>
-  );
+    )
 }
