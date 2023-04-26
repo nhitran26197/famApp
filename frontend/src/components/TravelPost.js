@@ -7,7 +7,7 @@ function TravelPost({ picURL, caption, date }) {
 
   return (
     <main class="h-full w-full flex items-center justify-center">
-      <div class="border-none max-w-screen-md  mt-6 rounded-2xl p-4">
+      <div style={{width:"700px"}}class="border-1 max-w-screen-md mt-6 rounded-2xl p-4">
         <div class="flex items-center	justify-between">
           <div class="gap-3.5	flex items-center ">
             <img
