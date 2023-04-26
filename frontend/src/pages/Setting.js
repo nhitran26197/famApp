@@ -231,13 +231,13 @@ export default function Profile() {
                         <div className="text-center">
                           {picture === localStorage.getItem("picture") ? (
                             <img
-                              className="mx-auto rounded-full h-40 w-40"
+                              className="mx-auto rounded-full h-60 w-60"
                               src={picture}
                               alt="profile"
                             />
                           ) : (
                             <img
-                              className="mx-auto rounded-full h-40 w-40"
+                              className="mx-auto rounded-full h-60 w-60"
                               src={picture}
                               alt="profile"
                             />
