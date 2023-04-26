@@ -6,6 +6,7 @@ import { MapComponent } from "../components/MapPostEvent";
 import { Wrapper } from "@googlemaps/react-wrapper";
 import { useState, useEffect } from "react";
 import AddPostModal from "../components/addPostModal";
+import AddButton from "../components/AddButton";
 
 function Eventpage() {
   const [posts, setPosts] = useState();
@@ -56,6 +57,7 @@ function Eventpage() {
                 </div>
               );
             })}
+          <AddButton />
           {/* <div className="add-post-button">
             <AddPostModal opened={false} className="button1" />
           </div> */}
