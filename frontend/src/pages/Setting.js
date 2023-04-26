@@ -19,14 +19,14 @@ export default function Profile() {
   let local_name = localStorage.getItem("name");
   console.log(localStorage.getItem("name"));
   let local_age = localStorage.getItem("age");
-  //const local_picture = localStorage.getItem("picture");
+  const local_picture = localStorage.getItem("picture");
 
   //   const local_name = "local_name";
   //   const local_age = "local_age";
   //   const local_picture = "local_picture";
   const [age, setAge] = useState("");
   const [name, setName] = useState("");
-  const [picture, setPicture] = useState("");
+  const [picture, setPicture] = useState(local_picture);
   const [images, setImages] = useState([]);
   //const [member_id, setMember_id] = useState(1);
   const [file, setFile] = useState(null);
@@ -35,8 +35,7 @@ export default function Profile() {
     event.preventDefault();
     const result = await postImage({ image: file });
     console.log(result);
-    localStorage.removeItem("picture");
-    localStorage.setItem("picture", result);
+
     setPicture(result);
     setImages([result.image, ...images]);
     console.log(result.image);
@@ -62,9 +61,15 @@ export default function Profile() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        window.location.reload();
-      });
+        localStorage.removeItem("name");
+        localStorage.setItem("name", data.name);
+        localStorage.removeItem("age");
+        localStorage.setItem("age", data.age);
+        localStorage.removeItem("picture");
+        localStorage.setItem("picture", data.picture);
+        console.log(localStorage);
+      })
+      .then(() => window.location.reload());
   };
 
   return (
@@ -218,23 +223,33 @@ export default function Profile() {
               onSubmit={submitPhoto}
               className="flex flex-col justify-center items-center"
             >
-              <div className="space-y-12 ">
+              <div className="space-y-12">
                 <div>
                   <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div className="col-span-full">
-                      {/* <label
-                        htmlFor="cover-photo"
-                        className="block text-sm font-medium leading-6 text-gray-900 "
-                      >
-                        Profile picture
-                      </label> */}
                       <div className="mt-2 flex justify-center rounded-lg  px-6 py-10">
-                        {/* border border-dashed border-gray-900/25 */}
                         <div className="text-center">
-                          <UserCircleIcon
-                            className="mx-auto h-24 w-24 text-gray-300"
-                            aria-hidden="true"
-                          />
+                          {/* <PhotoIcon
+                        className="mx-auto h-12 w-12 text-gray-300"
+                        aria-hidden="true"
+                      /> */}
+                          {picture === localStorage.getItem("picture") ? (
+                            // <UserCircleIcon
+                            //   className="mx-auto h-40 w-40 text-gray-300"
+                            //   aria-hidden="true"
+                            // />
+                            <img
+                              className="mx-auto rounded-full h-40 w-40"
+                              src={picture}
+                              alt="profile"
+                            />
+                          ) : (
+                            <img
+                              className="mx-auto rounded-full h-40 w-40"
+                              src={picture}
+                              alt="profile"
+                            />
+                          )}
                           <div className="mt-4 flex text-sm leading-6 text-gray-600">
                             <label
                               htmlFor="file-upload"
@@ -269,12 +284,6 @@ export default function Profile() {
                 </button>
               </div>
             </form>
-            <div
-              className="flex w-full justify-center"
-              style={{ marginTop: "20px" }}
-            >
-              <img className="rounded-full" src={picture}></img>
-            </div>
           </div>
         </div>
       </div>

@@ -9,7 +9,6 @@ import Profile from "./pages/Profile";
 import ForgotPassword from "./pages/ForgotPassword";
 import Feedpage from "./pages/feedpage";
 import BucketList from "./pages/Bucket";
-import ProfilePage from "./pages/ProfilePage";
 import TimelineDisplay from "./pages/TimelineDisplay";
 import Forgot from "./pages/ResetPage";
 import Eventpage from "./pages/Eventpage";
@@ -31,7 +30,6 @@ root.render(
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/feedpage" element={<Feedpage />} />
         <Route path="/bucket" element={<BucketList />} />
-        <Route path="/profilepage" element={<ProfilePage />} />
         <Route path="/timeline" element={<TimelineDisplay />} />
         <Route path="/reset-password" element={<Forgot />} />
         <Route path="/setting" element={<Setting />} />

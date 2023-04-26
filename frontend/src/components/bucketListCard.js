@@ -1,40 +1,38 @@
-import React, {useState} from 'react';
-import BucketListCard from '../components/bucketList';
-import axios from 'axios';
-const BucketList = ({ items }) => {
+import React from "react";
 
-  const [Items, setItems] = useState([]);
-  const getBucketListItems = () => {
-    //api call to get the bucket list items
-    //set the items array to the response
-    axios
-      .get("http://localhost:3030/bucketlist")
-      .then((response) => {
-        console.log(response);
-        setItems(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  
-
-
+const BucketListCard = ({ item }) => {
   return (
-    
-    <div className="bucket-list">
-      
-    <button 
-    className="btn btn-primary" 
-    onClick={getBucketListItems}>Get Bucket List Items</button>
-    
-      {//can use map to iterate through the items array and return a bucket list card for each item
-      Items.map((item) => {
-        return <BucketListCard item={item} />;
-      })
-      }
-    </div>
+    <>
+      <div class="h-l max-w-2xl mx-auto mb-8 space-y-20">
+        <div class="max-w-screen md:w-full mx-auto">
+          <div class="flex flex-row space-y- items-center justify-center h-full p-8 bg-gray-100 rounded-xl space-x-10">
+            <div class="w-2/3">
+              <p class="w-full text-2xl font-semibold text-black">
+                {item.title}
+              </p>
+              <p class="w-full pb-8 text-sm tracking-wide leading-tight text-black">
+                {item.description}
+              </p>
+              <div class="rounded w-1/2">
+                <div class="opacity-95 border rounded-lg border-black bg-sand px-4">
+                  <p class="m-auto inset-0 text-sm font-medium leading-normal text-center text-black py-2">
+                    {item.location}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="w-auto h-">
+              <img
+                alt="too lazy for alt, sorry /shrug"
+                class="flex-1 h-full rounded-lg"
+                src={item.image}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
-export default BucketList;
+export default BucketListCard;

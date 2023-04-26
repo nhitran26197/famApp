@@ -1,14 +1,14 @@
 import React from "react";
 
 const TimeLineJSX = ({ items }) => {
-  //console.log(items);
+  console.log(items);
   return (
     <>
       <div>
         <ol>
-          <li class="border-l-2 border-darkteal">
+          <li class="border-l-2 border-green">
             <div class="md:flex">
-              <div class="bg-darkteal w-6 h-6 flex items-center justify-center rounded-full -ml-3.5">
+              <div class="bg-green w-6 h-6 flex items-center justify-center rounded-full -ml-3.5">
                 <svg
                   aria-hidden="true"
                   focusable="false"
@@ -40,13 +40,12 @@ const TimeLineJSX = ({ items }) => {
                   </a>
                 </div>
                 <p class="text-gray-700 mb-6">{items.description}</p>
-                <button
-                  type="button"
-                  class="inline-block px-3.5 py-1 border border-black text-black font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
-                  data-mdb-ripple="true"
-                >
-                  More Info
-                </button>
+                <img
+                  className="rounded"
+                  src={items.image}
+                  alt=""
+                  class="mb-6"
+                />
               </div>
             </div>
           </li>

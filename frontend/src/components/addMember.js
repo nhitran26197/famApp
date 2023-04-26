@@ -25,6 +25,7 @@ export default function AddMember() {
   const [images, setImages] = useState([]);
   const [member_id, setMember_id] = useState(1);
   const [file, setFile] = useState(null);
+  const [showAlert, setShowAlert] = useState(false);
 
   const submitPhoto = async (event) => {
     event.preventDefault();
@@ -55,12 +56,12 @@ export default function AddMember() {
       }),
       headers: { "Content-Type": "application/json" },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        res.json();
+        setShowAlert(true);
+      })
       .then((data) => {
         console.log(data);
-      })
-      .then(() => {
-        alert("Member added successfully!");
       })
       .catch((err) => {
         console.log(err);
@@ -68,8 +69,10 @@ export default function AddMember() {
   };
 
   useEffect(() => {
-    console.log(file);
-  }, [file]);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
+  }, [showAlert]);
 
   return (
     <>
@@ -272,6 +275,26 @@ export default function AddMember() {
         >
           Submit
         </button>
+        {showAlert && (
+          <div className="alert alert-success">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current flex-shrink-0 h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Your post has been added</span>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* <AddMemberModal /> */}

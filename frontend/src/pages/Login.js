@@ -7,6 +7,7 @@ const Login = () => {
   //route to dashboard
   const routeToDashBoard = (e) => {
     e.preventDefault();
+
     navigate("/dashboard");
   };
 
@@ -20,19 +21,6 @@ const Login = () => {
     localStorage.setItem("user", userObject.name);
     localStorage.setItem("email", userObject.email);
   }
-
-  // useEffect(() => {
-  //   /* global google */
-  //   google.accounts.id.initialize({
-  //     client_id: "529244598477-he9l0o8rm3ou3e98u2c5peme74iod4c3.apps.googleusercontent.com",
-  //     callback: handleCallbackResponse,
-  //   });
-
-  //   google.accounts.id.renderButton(
-  //     document.getElementById('signInDiv'),
-  //     { theme : 'outline', size : 'large', text: 'continue_with', width: '300px', height: '50px' }
-  //   );
-  // }, []);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -55,6 +43,7 @@ const Login = () => {
           localStorage.setItem("picture", res.data.picture);
           localStorage.setItem("age", res.data.age);
           console.log(res.data.member_id);
+          console.log(localStorage);
           navigate("/dashboard");
         }
       })

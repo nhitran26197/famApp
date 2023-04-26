@@ -1,12 +1,14 @@
-//profile page
 import React, { Component } from "react";
 import NavBar from "../components/Navbar";
 import TimeLineLogic from "../components/TimeLineLogic";
-import BucketList from "../components/bucketListCard";
+import BucketList from "../components/getBucketList";
 import "../css/Profile.css";
 //import familypage from "../familyimage.jpeg";
 import AddGoal from "../components/addGoal";
 import AddTime from "../components/addTime";
+import { Dialog, Transition } from "@headlessui/react";
+import AddPost from "../components/addPost";
+import { useState, useEffect, useRef, Fragment } from "react";
 
 const bucketListItems = [
   {
@@ -15,6 +17,8 @@ const bucketListItems = [
     description:
       "Experience the natural beauty of one of America's most iconic landmarks.",
     location: "Arizona, USA",
+    image:
+      "https://cdn.aarp.net/content/dam/aarp/travel/destinations/2020/11/1140-big-bend-national-park-hero.jpg",
   },
   {
     id: 2,
@@ -34,18 +38,25 @@ const bucketListItems = [
 
 const items = [
   {
-    title: "Go to the moon",
-    description: "I want to go to the moon",
+    title: "I was born",
+    description: "I was born in 1999",
     location: "Moon",
+    image:
+      "https://thumbs.dreamstime.com/b/one-day-old-indian-asian-infant-newborn-baby-black-white-picture-one-day-old-new-born-baby-black-white-photo-125370761.jpg",
   },
   {
     title: "Go to the moon",
-    description: "I want to go to the moon",
+    description: "First time to school",
     location: "Moon",
+    image:
+      "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_14481062/Image/News/2020/January/Articles_Kindness_Little_01-21-20-03.jpg",
   },
 ];
 
 export default function Profile() {
+  const [open, setOpen] = useState(false);
+  const cancelButtonRef = useRef(null);
+
   return (
     <>
       <div>
@@ -101,7 +112,8 @@ export default function Profile() {
                       <div class="relative">
                         <img
                           alt="..."
-                          src="https://demos.creative-tim.com/notus-js/assets/img/team-2-800x800.jpg"
+                          src={localStorage.getItem("picture")}
+                          //src="https://demos.creative-tim.com/notus-js/assets/img/team-2-800x800.jpg"
                           class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
                         />
                       </div>
@@ -141,7 +153,7 @@ export default function Profile() {
                   </div>
                   <div class="text-center mt-12">
                     <h3 class="text-4xl font-semibold leading-normal text-blueGray-700 mb-4">
-                      Jenna Stones
+                      {localStorage.getItem("name")}
                     </h3>
                   </div>
                 </div>
@@ -152,7 +164,65 @@ export default function Profile() {
         <div>
           <div class="flex place-content-around">
             <div class="mt-8">
-              <AddGoal />
+              <button
+                type="button"
+                className="button text-blueGray-700"
+                style={{ backgroundColor: "#9EBC9E" }}
+                onClick={() => setOpen(true)}
+                ref={cancelButtonRef}
+              >
+                Add Goal
+              </button>
+              <Transition.Root show={open} as={Fragment}>
+                <Dialog
+                  as="div"
+                  className="relative z-10"
+                  initialFocus={cancelButtonRef}
+                  onClose={setOpen}
+                >
+                  <Transition.Child
+                    as={Fragment}
+                    enter="ease-out duration-300"
+                    enterFrom="opacity-0"
+                    enterTo="opacity-100"
+                    leave="ease-in duration-200"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                  >
+                    <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+                  </Transition.Child>
+
+                  <div className="fixed inset-0 z-10 overflow-y-auto">
+                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                      <Transition.Child
+                        as={Fragment}
+                        enter="ease-out duration-300"
+                        enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                        enterTo="opacity-100 translate-y-0 sm:scale-100"
+                        leave="ease-in duration-200"
+                        leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                        leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                      >
+                        <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 ">
+                          <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                            <AddGoal />
+                          </div>
+                          <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                            <button
+                              type="button"
+                              className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                              onClick={() => setOpen(false)}
+                              ref={cancelButtonRef}
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        </Dialog.Panel>
+                      </Transition.Child>
+                    </div>
+                  </div>
+                </Dialog>
+              </Transition.Root>
             </div>
             <div class="mt-8">
               <AddTime />

@@ -1,21 +1,31 @@
 import "../css/feedpage.module.css";
+import React, { useState } from "react";
 
 function TravelPost({ picURL, caption, date }) {
   const options = { month: "long", day: "numeric", year: "numeric" };
   const dateInfo = new Date(date);
   const dateString = dateInfo.toLocaleDateString("en-US", options);
+  const [likes, setLikes] = useState(0);
+  const [liked, setLiked] = useState(false);
+  const clickLike = () => {
+    setLikes(likes + 1);
+    setLiked(true);
+  };
 
   return (
     <main class="h-full w-full flex items-center justify-center">
-      <div style={{width:"700px"}}class="border-1 max-w-screen-md mt-6 rounded-2xl p-4">
+      <div
+        style={{ width: "700px" }}
+        class="border-1 max-w-screen-md mt-6 rounded-2xl p-4"
+      >
         <div class="flex items-center	justify-between">
           <div class="gap-3.5	flex items-center ">
             <img
-              src="https://images.unsplash.com/photo-1617077644557-64be144aa306?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+              src={localStorage.getItem("picture")}
               class="object-cover bg-yellow-500 rounded-full w-10 h-10"
             />
             <div class="flex flex-col">
-              <b class="mb-2 capitalize">sofia müller</b>
+              <b class="mb-2 capitalize">{localStorage.getItem("name")}</b>
               <time datetime="06-08-21" class="text-gray-400 text-xs">
                 {dateString}
               </time>
@@ -105,20 +115,20 @@ function TravelPost({ picURL, caption, date }) {
             </svg>
             <div class="text-sm	">0 Comments</div>
           </div>
-          <div class="flex items-center	gap-3">
+          <div class="flex items-center	gap-3" onClick={clickLike}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 text-red-500"
+              class="h-6 w-6 text-white-500 hover:text-red-500 hover:fill-current fill-none"
               viewBox="0 0 20 20"
-              fill="currentColor"
             >
               <path
                 fill-rule="evenodd"
+                stroke="black"
                 d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
                 clip-rule="evenodd"
               />
             </svg>
-            <div class="text-sm">1 Likes</div>
+            <div class="text-sm">{likes} Likes</div>
           </div>
           <div class="flex items-center	gap-3">
             <svg

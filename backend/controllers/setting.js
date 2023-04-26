@@ -13,9 +13,9 @@ const Setting = (req, res) => {
   )
     .then((updatedMember) => {
       console.log(updatedMember);
+      res.json(updatedMember);
     })
     .catch((err) => console.error(err));
-  res.json("updated");
 };
 
 // const profileGet = (req, res) => {

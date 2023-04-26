@@ -85,7 +85,7 @@ export default function NavBar() {
                             <span className="sr-only">Open user menu</span>
                             <img
                               className="h-8 w-8 rounded-full"
-                              src={user.imageUrl}
+                              src={localStorage.getItem("picture")}
                               alt=""
                             />
                           </Menu.Button>
