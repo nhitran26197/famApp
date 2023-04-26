@@ -1,29 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import styles from '../css/login.module.css';
-import { Link, useNavigate} from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import styles from "../css/login.module.css";
+import { Link, useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode";
+import axios from "axios";
 const Login = () => {
-
   //route to dashboard
   const routeToDashBoard = (e) => {
     e.preventDefault();
-    navigate('/dashboard');
-  }
+    navigate("/dashboard");
+  };
 
-  
   const [user, setUser] = useState(null);
 
   function handleCallbackResponse(response) {
     const userObject = jwt_decode(response.credential);
     console.log(userObject);
     setUser(userObject);
-    document.getElementById('signInDiv').hidden = true;
-    localStorage.setItem('user', userObject.name);
-    localStorage.setItem('email', userObject.email);
+    document.getElementById("signInDiv").hidden = true;
+    localStorage.setItem("user", userObject.name);
+    localStorage.setItem("email", userObject.email);
   }
-
- 
 
   // useEffect(() => {
   //   /* global google */
@@ -38,32 +34,34 @@ const Login = () => {
   //   );
   // }, []);
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   let navigate = useNavigate();
 
   //async function to handle login
   const handleLogin = async (e) => {
     e.preventDefault();
-    
 
     axios
-      .post('http://localhost:3030/login', {
+      .post("http://localhost:3030/login", {
         username: username,
         password: password,
       })
       .then((res) => {
-        if(res.status === 200){
-          localStorage.setItem('member_id', res.data.member_id);
+        if (res.status === 200) {
+          localStorage.setItem("member_id", res.data.member_id);
+          localStorage.setItem("name", res.data.name);
+          localStorage.setItem("account", res.data.account);
+          localStorage.setItem("picture", res.data.picture);
+          localStorage.setItem("age", res.data.age);
           console.log(res.data.member_id);
-          navigate('/dashboard');
+          navigate("/dashboard");
         }
       })
       .catch((err) => {
         console.log(err);
-      }
-      );
-  }
+      });
+  };
 
   return (
     <div className={styles.container}>
@@ -72,28 +70,47 @@ const Login = () => {
         <form onSubmit={handleLogin}>
           <label>
             <span className={styles.username}>Username:</span>
-            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </label>
           <label>
             <span className={styles.password}>Password:</span>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </label>
           <label>
-            <Link className={styles.forgot} to="/forgot-password">Forgot Password?</Link>
+            <Link className={styles.forgot} to="/forgot-password">
+              Forgot Password?
+            </Link>
           </label>
           <button type="submit">Login</button>
           <div id="signInDiv"></div>
-          { user && 
-          <div>
-          <img alt="user pfp" src={user.picture}></img>
-          <p className={styles.h1}>Logged in as {user.name}</p>
-          <button type="submit" onClick={(e) => routeToDashBoard(e)}>Continue To Dashboard</button>
-          </div>}
-          <Link className={styles.link} to="/register">Sign Up</Link>
-          </form>
+          {user && (
+            <div>
+              <img alt="user pfp" src={user.picture}></img>
+              <p className={styles.h1}>Logged in as {user.name}</p>
+              <button type="submit" onClick={(e) => routeToDashBoard(e)}>
+                Continue To Dashboard
+              </button>
+            </div>
+          )}
+          <Link className={styles.link} to="/register">
+            Sign Up
+          </Link>
+        </form>
       </div>
       <div>
-        <img className={styles.heroimage} src="https://svgshare.com/i/sEE.svg" alt="asdf"/>
+        <img
+          className={styles.heroimage}
+          src="https://svgshare.com/i/sEE.svg"
+          alt="asdf"
+        />
       </div>
     </div>
   );

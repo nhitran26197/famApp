@@ -14,6 +14,7 @@ import TimelineDisplay from "./pages/TimelineDisplay";
 import Forgot from "./pages/ResetPage";
 import Eventpage from "./pages/Eventpage";
 import Travelpage from "./pages/Travelpage";
+import Setting from "./pages/Setting";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -33,6 +34,7 @@ root.render(
         <Route path="/profilepage" element={<ProfilePage />} />
         <Route path="/timeline" element={<TimelineDisplay />} />
         <Route path="/reset-password" element={<Forgot />} />
+        <Route path="/setting" element={<Setting />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
