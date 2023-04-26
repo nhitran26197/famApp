@@ -66,49 +66,58 @@ const Login = () => {
   return (
     <div className={styles.container}>
       <div className={styles.form}>
-        <h1 className={styles.h1}>Login to fam.ily</h1>
-        <form onSubmit={handleLogin}>
-          <label>
-            <span className={styles.username}>Username:</span>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </label>
-          <label>
-            <span className={styles.password}>Password:</span>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-          <label>
-            <Link className={styles.forgot} to="/forgot-password">
-              Forgot Password?
-            </Link>
-          </label>
-          <button type="submit">Login</button>
-          <div id="signInDiv"></div>
-          {user && (
-            <div>
-              <img alt="user pfp" src={user.picture}></img>
-              <p className={styles.h1}>Logged in as {user.name}</p>
-              <button type="submit" onClick={(e) => routeToDashBoard(e)}>
-                Continue To Dashboard
-              </button>
+        <div style={{ paddingTop: "100px", paddingLeft: "100px" }}>
+          <form onSubmit={handleLogin}>
+            <label>
+              <span className={styles.username}>Username:</span>
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </label>
+            <label>
+              <span className={styles.password}>Password:</span>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+            <label>
+              <Link className={styles.forgot} to="/forgot-password">
+                Forgot Password?
+              </Link>
+            </label>
+            <button type="submit">Login</button>
+            <div id="signInDiv"></div>
+            {user && (
+              <div>
+                <img alt="user pfp" src={user.picture}></img>
+                <p className={styles.h1}>Logged in as {user.name}</p>
+                <button type="submit" onClick={(e) => routeToDashBoard(e)}>
+                  Continue To Dashboard
+                </button>
+              </div>
+            )}
+            <div style={{ marginTop: "10px" }}>
+              <Link className={styles.link} to="/register">
+                Sign Up
+              </Link>
             </div>
-          )}
-          <Link className={styles.link} to="/register">
-            Sign Up
-          </Link>
-        </form>
+          </form>
+        </div>
       </div>
       <div>
+        <div>
+          <div className={styles.form}>
+            <h1 className={styles.h1}>Welcome back!</h1>
+          </div>
+        </div>
         <img
-          className={styles.heroimage}
-          src="https://svgshare.com/i/sEE.svg"
+          // className={styles.heroimage}
+          // src="https://svgshare.com/i/sEE.svg"
+          src="https://static.vecteezy.com/system/resources/previews/002/292/974/non_2x/happy-family-with-son-and-daughter-parents-hugging-children-illustration-vector.jpg"
           alt="asdf"
         />
       </div>

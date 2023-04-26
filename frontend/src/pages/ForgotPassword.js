@@ -17,8 +17,7 @@ const Forgot = () => {
     axios
       .post("http://localhost:3030/pwReset", {
         email,
-      }
-      )
+      })
       .then((res) => {
         if (res.status === 200) {
           alert("Check your email for a link to reset your password!!!!!!");
@@ -29,30 +28,44 @@ const Forgot = () => {
       });
   };
 
-
   return (
     <div className={styles.container}>
       <div className={styles.form}>
-        <h1 className={styles.h1}>Forgot Password</h1>
-        <form onSubmit={routeToLogin}>
-          <label>
-            <span>Email</span>
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
-          <button onClick={handleReset} className={styles.button} type="submit">
-            Reset Password
-          </button>
-          <Link className={styles.link} to="/login">
-            Login
-          </Link>
-        </form>
+        <div style={{ paddingTop: "100px", paddingLeft: "100px" }}>
+          <form onSubmit={routeToLogin}>
+            <label>
+              <span className={styles.username}>Email</span>
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
+            <button
+              onClick={handleReset}
+              className={styles.button}
+              type="submit"
+            >
+              Reset Password
+            </button>
+            <div style={{ marginTop: "10px" }}>
+              <Link className={styles.link} to="/login">
+                Back to <strong>Login</strong>
+              </Link>
+            </div>
+          </form>
+        </div>
       </div>
       <div>
-        <img className={styles.heroimage} src="https://svgshare.com/i/sEE.svg" alt="asdf"/>
+        <div>
+          <div className={styles.form}>
+            <h1 className={styles.h1}>Welcome back!</h1>
+          </div>
+        </div>
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/002/292/974/non_2x/happy-family-with-son-and-daughter-parents-hugging-children-illustration-vector.jpg"
+          alt="asdf"
+        />
       </div>
     </div>
   );
