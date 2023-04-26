@@ -1,39 +1,33 @@
 import "../css/Profile.css";
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 
 function AddGoal(props) {
-  const dialogRef = React.useRef(null);
-  const [title, setTitle] = React.useState("");
-  const [description, setDescription] = React.useState("");
-  const [location, setLocation] = React.useState("");
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [relationship, setRelationship] = useState("parent");
-  const [account, setAccount] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("");
   const [picture, setPicture] = useState("");
   const [images, setImages] = useState([]);
-  const [member_id, setMember_id] = useState(1);
   const [file, setFile] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
 
-  const submitAddMember = (e) => {
-    e.preventDefault();
-    // await fetch("/api/goals", {
-    alert("Submit your goal!");
+  // const submitAddMember = (e) => {
+  //   e.preventDefault();
+  //   // await fetch("/api/goals", {
+  //   alert("Submit your goal!");
 
-    axios
-      .post("http://localhost:3030/BucketList/create", {
-        title,
-        description,
-        location,
-      })
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-      });
-  };
+  //   axios
+  //     .post("http://localhost:3030/BucketList/create", {
+  //       title,
+  //       description,
+  //       location,
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //       console.log(res.data);
+  //     });
+  // };
   async function postImage({ image }) {
     const formData = new FormData();
     formData.append("image", image);
@@ -44,6 +38,11 @@ function AddGoal(props) {
     console.log(result.data);
     return result.data;
   }
+  useEffect(() => {
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
+  }, [showAlert]);
 
   const submitPhoto = async (event) => {
     event.preventDefault();
@@ -58,6 +57,30 @@ function AddGoal(props) {
   const fileSelected = (event) => {
     const file = event.target.files[0];
     setFile(file);
+  };
+
+  const submitGoal = (e) => {
+    e.preventDefault();
+    fetch("http://localhost:3030/bucketlist/create", {
+      method: "POST",
+      body: JSON.stringify({
+        title: title,
+        description: description,
+        location: location,
+        picture: picture,
+      }),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .then(() => {
+        setShowAlert(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -151,7 +174,7 @@ function AddGoal(props) {
                         type="text"
                         name="name"
                         id="name"
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={(e) => setTitle(e.target.value)}
                         className="block w-full border-gray-300 rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -169,7 +192,7 @@ function AddGoal(props) {
                         type="text"
                         name="age"
                         id="age"
-                        onChange={(e) => setAge(e.target.value)}
+                        onChange={(e) => setDescription(e.target.value)}
                         className="block w-full border-gray-300 rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -187,10 +210,8 @@ function AddGoal(props) {
                         type="text"
                         name="username"
                         id="username"
-                        onChange={(e) => setAccount(e.target.value)}
-                        autoComplete="username"
+                        onChange={(e) => setLocation(e.target.value)}
                         className="block w-full border-gray-300 rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        placeholder="janesmith"
                       />
                     </div>
                   </div>
@@ -259,7 +280,7 @@ function AddGoal(props) {
       <div className="mt-6 flex items-center justify-end gap-x-6">
         <button
           type="submit"
-          onClick={submitAddMember}
+          onClick={submitGoal}
           className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Submit
@@ -280,7 +301,7 @@ function AddGoal(props) {
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span>Your post has been added</span>
+              <span>Your goal has been added</span>
             </div>
           </div>
         )}

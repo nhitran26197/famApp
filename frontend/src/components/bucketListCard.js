@@ -25,7 +25,7 @@ const BucketListCard = ({ item }) => {
               <img
                 alt="too lazy for alt, sorry /shrug"
                 class="flex-1 h-full rounded-lg"
-                src={item.image}
+                src={item.picture}
               />
             </div>
           </div>

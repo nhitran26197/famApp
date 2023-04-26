@@ -23,7 +23,7 @@ export default function AddMember() {
   const [account, setAccount] = useState("");
   const [picture, setPicture] = useState("");
   const [images, setImages] = useState([]);
-  const [member_id, setMember_id] = useState(1);
+
   const [file, setFile] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
 

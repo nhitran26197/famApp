@@ -29,6 +29,7 @@ const bucketlist = {
       title: req.body.title,
       description: req.body.description,
       location: req.body.location,
+      picture: req.body.picture,
     });
     bucket
       .save()
