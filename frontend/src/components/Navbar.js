@@ -19,6 +19,11 @@ const userNavigation = [
   { name: "Your Profile", href: "/profile" },
   { name: "Sign out", href: "/login" },
 ];
+
+const logout = () => {
+  localStorage.clear();
+};
+
 //@ts-ignore
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -98,6 +103,7 @@ export default function NavBar() {
                               <Menu.Item key={item.name}>
                                 {({ active }) => (
                                   <a
+                                    onClick={ item.name == "Sign out" ? logout : null}
                                     href={item.href}
                                     className={classNames(
                                       active ? "bg-gray-100" : "",
