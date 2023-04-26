@@ -1,6 +1,8 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import "../css/contact.css";
+import Image1 from "../assets/Hide.jpeg";
 
 const user = {
   name: "Tom Cook",
@@ -19,6 +21,39 @@ const userNavigation = [
   { name: "Your Profile", href: "/profile" },
   { name: "Sign out", href: "/login" },
 ];
+
+const contactList = [
+  {
+    avatar:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
+    name: "Jane Wang",
+    status: "meow",
+  },
+  {
+    avatar: Image1,
+    name: "Trevor Reigh",
+    status: "https://hackuta.org/",
+  },
+  {
+    avatar:
+      "https://images.unsplash.com/photo-1484608856193-968d2be4080e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+    name: "Nhi Tran",
+    status: "Eat, rock climb, sleep, repeat!",
+  },
+  {
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+    name: "Parth Shawarma",
+    status: "Sleep is the loml",
+  },
+  {
+    avatar:
+      "https://images.unsplash.com/photo-1514222788835-3a1a1d5b32f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDB8fHBlb3BsZSUyMGhlYWRzaG90c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+    name: "Juan Games",
+    status: "i miss us",
+  },
+];
+
 //@ts-ignore
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -59,6 +94,54 @@ export default function NavBar() {
                             {item.name}
                           </a>
                         ))}
+                        <div>
+                          {/* Profile dropdown */}
+                          <Menu as="div" className="relative">
+                            <div>
+                              <Menu.Button>
+                                <span className=" rounded-md py-2 px-3 text-lg font-bold">
+                                  Friends
+                                </span>
+                              </Menu.Button>
+                            </div>
+                            <Transition
+                              as={Fragment}
+                              enter="transition ease-out duration-100"
+                              enterFrom="transform opacity-0 scale-95"
+                              enterTo="transform opacity-100 scale-100"
+                              leave="transition ease-in duration-75"
+                              leaveFrom="transform opacity-100 scale-100"
+                              leaveTo="transform opacity-0 scale-95"
+                            >
+                              <Menu.Items className="absolute right--1 z-10 w-64 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                {contactList.map((item) => (
+                                  <Menu.Item key={item.name}>
+                                    {({ active }) => (
+                                      <a
+                                        href={item.href}
+                                        className={classNames(
+                                          active ? "bg-gray-100" : "",
+                                          "px-4 py-2 text-sm text-gray-700 contact-item"
+                                        )}
+                                      >
+                                        <img
+                                          src={item.avatar}
+                                          className="contact-avatar"
+                                        />
+                                        <div className="contact-text">
+                                          <div>{item.name}</div>
+                                          <div className="contact-status">
+                                            {item.status}
+                                          </div>
+                                        </div>
+                                      </a>
+                                    )}
+                                  </Menu.Item>
+                                ))}
+                              </Menu.Items>
+                            </Transition>
+                          </Menu>
+                        </div>
                       </div>
                     </div>
                   </div>
