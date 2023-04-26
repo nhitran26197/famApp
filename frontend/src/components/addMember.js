@@ -87,11 +87,19 @@ export default function AddMember() {
                   height: "300px",
                   borderRadius: "20px",
                 }}
+                // style={{
+                //   display: "flex",
+                //   flexDirection: "column",
+                //   justifyContent: "center",
+                //   alignItems: "center",
+                //   marginLeft: "40px",
+                //   marginRight: "40px",
+                // }}
               >
                 <p className="mt-1 text-sm leading-6 text-gray-600"></p>
 
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                  <div className="sm:col-span-3">
+                  <div className="sm:col-span-3 ">
                     <label
                       htmlFor="name"
                       className="block text-sm font-medium leading-6 text-gray-900"
@@ -201,7 +209,7 @@ export default function AddMember() {
                       >
                         Profile picture
                       </label>
-                      <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                      <div className="mt-2 flex justify-center rounded-lg  px-6 py-10">
                         <div className="text-center">
                           {/* <PhotoIcon
                         className="mx-auto h-12 w-12 text-gray-300"
@@ -209,12 +217,12 @@ export default function AddMember() {
                       /> */}
                           {picture === "" ? (
                             <UserCircleIcon
-                              className="mx-auto h-24 w-24 text-gray-300"
+                              className="mx-auto h-40 w-40 text-gray-300"
                               aria-hidden="true"
                             />
                           ) : (
                             <img
-                              className="mx-auto rounded-full h-24 w-24"
+                              className="mx-auto rounded-full h-40 w-40"
                               src={picture}
                               alt="profile"
                             />
@@ -246,8 +254,13 @@ export default function AddMember() {
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-center gap-x-6">
-            <button type="submit ">Add Picture</button>
+          <div className="flex justify-center mt-2">
+            <button
+              className="bg-green-300 hover:bg-gray-100 text-neutral-900 font-semibold py-2 px-4  rounded "
+              type="submit"
+            >
+              Add Picture
+            </button>
           </div>
         </form>
       </div>

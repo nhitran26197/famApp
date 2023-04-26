@@ -149,7 +149,8 @@ export default function Example() {
               >
                 Photo
               </label>
-              <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+
+              <div className="mt-2 flex justify-center rounded-lg  px-6 py-10">
                 <div className="text-center">
                   {picture === "" ? (
                     <PhotoIcon
@@ -158,34 +159,37 @@ export default function Example() {
                     />
                   ) : (
                     <img
-                      className="mx-auto rounded h-60 w-full object-cover"
+                      className="mx-auto rounded h-80 w-full object-cover"
                       src={picture}
                       alt="profile"
                     />
                   )}
-
                   <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                    {/* <label
+                    <label
                       htmlFor="file-upload"
                       className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                     >
-                      <span>Upload a file</span> */}
-                    <input
-                      id="file-upload"
-                      name="file-upload"
-                      type="file"
-                      //className="sr-only"
-                      onChange={fileSelected}
-                    />
-                    {/* </label> */}
+                      <span>Upload a file</span>
+                      <input
+                        id="file-upload"
+                        name="file-upload"
+                        type="file"
+                        className="sr-only"
+                        onChange={fileSelected}
+                      />
+                    </label>
+                    <p className="pl-1">or drag and drop</p>
                   </div>
+                  <p className="text-xs leading-5 text-gray-600">
+                    PNG, JPG, GIF up to 10MB
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="flex justify-center mt-4">
+          <div className="flex justify-center mt-2">
             <button
-              className="bg-green-300 hover:bg-gray-100 text-neutral-900 font-semibold py-2 px-4 border border-gray-400 rounded "
+              className="bg-green-300 hover:bg-gray-100 text-neutral-900 font-semibold py-2 px-4  rounded "
               type="submit"
             >
               Add Photo
@@ -206,7 +210,7 @@ export default function Example() {
               console.log(refLat.current);
               console.log(refLng.current);
             }}
-            className="bg-white mt-4 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded"
+            className="bg-white mt-4 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4  rounded"
           >
             Get Location
           </button>
@@ -234,7 +238,7 @@ export default function Example() {
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <span>Your purchase has been confirmed!</span>
+                <span>Your post has been added</span>
               </div>
             </div>
           )}

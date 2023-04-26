@@ -59,7 +59,7 @@ const Forgot = () => {
       <div>
         <div>
           <div className={styles.form}>
-            <h1 className={styles.h1}>Welcome back!</h1>
+            <h1 className={styles.h1}>No worry!</h1>
           </div>
         </div>
         <img

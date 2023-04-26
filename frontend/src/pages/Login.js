@@ -115,8 +115,6 @@ const Login = () => {
           </div>
         </div>
         <img
-          // className={styles.heroimage}
-          // src="https://svgshare.com/i/sEE.svg"
           src="https://static.vecteezy.com/system/resources/previews/002/292/974/non_2x/happy-family-with-son-and-daughter-parents-hugging-children-illustration-vector.jpg"
           alt="asdf"
         />

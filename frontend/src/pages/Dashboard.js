@@ -41,7 +41,7 @@ export default function Dashboard() {
       <div className="flex flex-row">
         <div className="w-6/12">
           <div className="flex justify-center">
-            <h1 className=" text-2xl font-bold mt-4">Family Tree</h1>
+            {/* <h1 className=" text-2xl font-bold mt-4">Family Tree</h1> */}
           </div>
           {nodes ? (
             <div>
