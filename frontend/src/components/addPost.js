@@ -19,7 +19,7 @@ async function postImage({ image }) {
 export default function Example() {
   const [file, setFile] = useState();
   const [images, setImages] = useState([]);
-  const [picture, setPicture] = useState();
+  const [picture, setPicture] = useState("");
   const [type, setType] = useState("travel");
   const [caption, setCaption] = useState();
   const [location_lat, setLocation_lat] = useState();
@@ -151,10 +151,19 @@ export default function Example() {
               </label>
               <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                 <div className="text-center">
-                  <PhotoIcon
-                    className="mx-auto h-12 w-12 text-gray-300"
-                    aria-hidden="true"
-                  />
+                  {picture === "" ? (
+                    <PhotoIcon
+                      className="mx-auto h-12 w-12 text-gray-300"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <img
+                      className="mx-auto rounded h-60 w-full object-cover"
+                      src={picture}
+                      alt="profile"
+                    />
+                  )}
+
                   <div className="mt-4 flex text-sm leading-6 text-gray-600">
                     {/* <label
                       htmlFor="file-upload"
@@ -183,9 +192,6 @@ export default function Example() {
             </button>
           </div>
         </form>
-        <div>
-          <img src={picture}></img>
-        </div>
       </div>
 
       <div>
@@ -213,24 +219,25 @@ export default function Example() {
             Submit
           </button>
           {showAlert && (
-          <div className="alert alert-success">
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="stroke-current flex-shrink-0 h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span>Your purchase has been confirmed!</span>
+            <div className="alert alert-success">
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="stroke-current flex-shrink-0 h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span>Your purchase has been confirmed!</span>
+              </div>
             </div>
-          </div>)}
+          )}
         </div>
       </div>
     </div>

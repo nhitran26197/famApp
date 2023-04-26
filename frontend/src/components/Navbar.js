@@ -6,7 +6,8 @@ const user = {
   name: "Tom Cook",
   email: "tom@example.com",
   imageUrl:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    //"https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    localStorage.getItem("picture"),
 };
 const navigation = [
   { name: "Family Tree", href: "/dashboard", current: false },
@@ -16,7 +17,7 @@ const navigation = [
   { name: "Profile", href: "/profile", current: false },
 ];
 const userNavigation = [
-  { name: "Your Profile", href: "/profile" },
+  { name: "Account", href: "/setting" },
   { name: "Sign out", href: "/login" },
 ];
 
@@ -103,7 +104,9 @@ export default function NavBar() {
                               <Menu.Item key={item.name}>
                                 {({ active }) => (
                                   <a
-                                    onClick={ item.name == "Sign out" ? logout : null}
+                                    onClick={
+                                      item.name == "Sign out" ? logout : null
+                                    }
                                     href={item.href}
                                     className={classNames(
                                       active ? "bg-gray-100" : "",

@@ -58,13 +58,13 @@ export default function AddMember() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-      }).then(() => {
+      })
+      .then(() => {
         alert("Member added successfully!");
       })
       .catch((err) => {
         console.log(err);
-      }
-      );
+      });
   };
 
   useEffect(() => {
@@ -207,10 +207,18 @@ export default function AddMember() {
                         className="mx-auto h-12 w-12 text-gray-300"
                         aria-hidden="true"
                       /> */}
-                          <UserCircleIcon
-                            className="mx-auto h-24 w-24 text-gray-300"
-                            aria-hidden="true"
-                          />
+                          {picture === "" ? (
+                            <UserCircleIcon
+                              className="mx-auto h-24 w-24 text-gray-300"
+                              aria-hidden="true"
+                            />
+                          ) : (
+                            <img
+                              className="mx-auto rounded-full h-24 w-24"
+                              src={picture}
+                              alt="profile"
+                            />
+                          )}
                           <div className="mt-4 flex text-sm leading-6 text-gray-600">
                             <label
                               htmlFor="file-upload"
@@ -242,9 +250,6 @@ export default function AddMember() {
             <button type="submit ">Add Picture</button>
           </div>
         </form>
-        <div className="flex w-full justify-center">
-          <img width="100px" src={picture}></img>
-        </div>
       </div>
       <div className="mt-6 flex items-center justify-end gap-x-6">
         <button

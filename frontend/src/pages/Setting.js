@@ -35,6 +35,8 @@ export default function Profile() {
     event.preventDefault();
     const result = await postImage({ image: file });
     console.log(result);
+    localStorage.removeItem("picture");
+    localStorage.setItem("picture", result);
     setPicture(result);
     setImages([result.image, ...images]);
     console.log(result.image);
@@ -61,6 +63,7 @@ export default function Profile() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        window.location.reload();
       });
   };
 

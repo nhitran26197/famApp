@@ -217,7 +217,7 @@ export default function Dashboard() {
         <div className="mt-6">
           <Wrapper
             apiKey={"AIzaSyCecWQ01w2hL3sX2XNdjBVsL0KA9Yln4Hs"}
-            version="beta"
+            version={["beta"]}
             libraries={["marker"]}
           >
             <MapComponent />
