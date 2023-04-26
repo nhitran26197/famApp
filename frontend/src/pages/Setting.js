@@ -229,15 +229,7 @@ export default function Profile() {
                     <div className="col-span-full">
                       <div className="mt-2 flex justify-center rounded-lg  px-6 py-10">
                         <div className="text-center">
-                          {/* <PhotoIcon
-                        className="mx-auto h-12 w-12 text-gray-300"
-                        aria-hidden="true"
-                      /> */}
                           {picture === localStorage.getItem("picture") ? (
-                            // <UserCircleIcon
-                            //   className="mx-auto h-40 w-40 text-gray-300"
-                            //   aria-hidden="true"
-                            // />
                             <img
                               className="mx-auto rounded-full h-40 w-40"
                               src={picture}
