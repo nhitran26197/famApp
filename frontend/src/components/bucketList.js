@@ -26,7 +26,7 @@ const BucketListCard = ({ item }) => {
               <img
                 alt="too lazy for alt, sorry /shrug"
                 class="flex-1 h-full rounded-lg"
-                src="https://via.placeholder.com/96x136"
+                src={item.image}
               />
             </div>
           </div>

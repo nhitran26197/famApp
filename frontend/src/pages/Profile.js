@@ -15,6 +15,8 @@ const bucketListItems = [
     description:
       "Experience the natural beauty of one of America's most iconic landmarks.",
     location: "Arizona, USA",
+    image:
+      "https://cdn.aarp.net/content/dam/aarp/travel/destinations/2020/11/1140-big-bend-national-park-hero.jpg",
   },
   {
     id: 2,
@@ -34,7 +36,7 @@ const bucketListItems = [
 
 const items = [
   {
-    title: "Go to the moon",
+    title: "I was born",
     description: "I want to go to the moon",
     location: "Moon",
   },
@@ -42,6 +44,8 @@ const items = [
     title: "Go to the moon",
     description: "I want to go to the moon",
     location: "Moon",
+    image:
+      "https://www.nasa.gov/sites/default/files/thumbnails/image/as11-40-5902_orig.jpg",
   },
 ];
 
@@ -56,10 +60,10 @@ export default function Profile() {
           rel="stylesheet"
           href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
         />
-        <link
+        {/* <link
           rel="stylesheet"
           href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
-        />
+        /> */}
         <div>
           <section class="relative block h-500-px profile-header">
             <div class="absolute top-0 w-full h-full bg-center bg-cover">
@@ -101,7 +105,8 @@ export default function Profile() {
                       <div class="relative">
                         <img
                           alt="..."
-                          src="https://demos.creative-tim.com/notus-js/assets/img/team-2-800x800.jpg"
+                          src="https://esq.h-cdn.co/assets/17/08/2048x2048/square-1487943381-la-la-land-emma-stone.jpg"
+                          //src="https://demos.creative-tim.com/notus-js/assets/img/team-2-800x800.jpg"
                           class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
                         />
                       </div>
@@ -141,7 +146,7 @@ export default function Profile() {
                   </div>
                   <div class="text-center mt-12">
                     <h3 class="text-4xl font-semibold leading-normal text-blueGray-700 mb-4">
-                      Jenna Stones
+                      Emma Stones
                     </h3>
                   </div>
                 </div>
