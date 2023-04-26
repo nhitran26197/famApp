@@ -1,12 +1,9 @@
 import "../css/feedpage.css";
 import Navbar from "../components/Navbar";
 import Post from "../components/TravelPost";
-//import AddButton from "../components/AddButton";
 import { MapComponent } from "../components/MapPostEvent";
 import { Wrapper } from "@googlemaps/react-wrapper";
 import { useState, useEffect, useRef, Fragment } from "react";
-import AddPostModal from "../components/addPostModal";
-import AddButton from "../components/AddButton";
 import "../css/feedpage.css";
 import { Dialog, Transition } from "@headlessui/react";
 import AddPost from "../components/addPost";
@@ -76,11 +73,7 @@ function Eventpage() {
             </div>
             <span className="font-semibold">Add a post</span>
           </button>
-          {/* <div className="add-post-button">
-            <AddPostModal opened={false} className="button1" />
-          </div> */}
 
-          {/* <AddButton /> */}
           <Transition.Root show={openPost} as={Fragment}>
             <Dialog
               as="div"
