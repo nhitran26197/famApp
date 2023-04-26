@@ -16,7 +16,7 @@ function Map({ refLat, refLng }) {
       {/* <Wrapper apiKey={process.env.GOOGLE_API_KEY}> */}
       <Wrapper
         apiKey={"AIzaSyCecWQ01w2hL3sX2XNdjBVsL0KA9Yln4Hs"}
-        version={"beta"}
+        version={["beta"]}
         libraries={["marker"]}
       >
         <GetCoordinates
