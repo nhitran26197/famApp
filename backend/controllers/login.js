@@ -30,7 +30,7 @@ const login = (req, res) => {
         console.log(password);
         if (userData) {
             if (userData.password === password) {
-                res.status(200).send();
+                res.status(200).send({member_id: userData.member_id});
             }
             else {
                 res.status(400).send();

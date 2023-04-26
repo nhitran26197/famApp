@@ -54,8 +54,8 @@ const Login = () => {
       })
       .then((res) => {
         if(res.status === 200){
-          localStorage.setItem('user', res.data.name);
-          localStorage.setItem('email', res.data.email);
+          localStorage.setItem('member_id', res.data.member_id);
+          console.log(res.data.member_id);
           navigate('/dashboard');
         }
       })

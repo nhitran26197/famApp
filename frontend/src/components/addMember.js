@@ -46,7 +46,7 @@ export default function AddMember() {
     fetch("http://localhost:3030/addmember", {
       method: "POST",
       body: JSON.stringify({
-        member_id: 1,
+        member_id: localStorage.getItem("member_id"),
         name: name,
         age: age,
         relationship: relationship,
@@ -58,7 +58,13 @@ export default function AddMember() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-      });
+      }).then(() => {
+        alert("Member added successfully!");
+      })
+      .catch((err) => {
+        console.log(err);
+      }
+      );
   };
 
   useEffect(() => {

@@ -55,7 +55,12 @@ export default function Dashboard() {
                   ref={cancelButtonRef}
                 >
                   add member
-                  <svg width={"25px"} className="ml-2 mb-1" class="svg-icon" viewBox="0 0 20 20">
+                  <svg
+                    width={"25px"}
+                    className="ml-2 mb-1"
+                    class="svg-icon"
+                    viewBox="0 0 20 20"
+                  >
                     <path d="M12.075,10.812c1.358-0.853,2.242-2.507,2.242-4.037c0-2.181-1.795-4.618-4.198-4.618S5.921,4.594,5.921,6.775c0,1.53,0.884,3.185,2.242,4.037c-3.222,0.865-5.6,3.807-5.6,7.298c0,0.23,0.189,0.42,0.42,0.42h14.273c0.23,0,0.42-0.189,0.42-0.42C17.676,14.619,15.297,11.677,12.075,10.812 M6.761,6.775c0-2.162,1.773-3.778,3.358-3.778s3.359,1.616,3.359,3.778c0,2.162-1.774,3.778-3.359,3.778S6.761,8.937,6.761,6.775 M3.415,17.69c0.218-3.51,3.142-6.297,6.704-6.297c3.562,0,6.486,2.787,6.705,6.297H3.415z"></path>
                   </svg>
                 </button>
@@ -114,7 +119,32 @@ export default function Dashboard() {
                       leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                       leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     >
-                      <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                      <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl">
+                        <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                          <h3 class="text-xl ml-4 mt-1 font-semibold text-gray-900 ">
+                            Add Post
+                          </h3>
+                          <button
+                            type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-hide="defaultModal"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              class="w-5 h-5"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"
+                              ></path>
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                          </button>
+                        </div>
                         <AddPost />
                         <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                           <button

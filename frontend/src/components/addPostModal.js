@@ -35,7 +35,7 @@ function PostPop({opened}) {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative w-72 transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8">
+              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all">
                 <AddPost/>
                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                   <button

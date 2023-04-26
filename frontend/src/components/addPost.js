@@ -1,6 +1,6 @@
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 
 import Map from "./mapPicker";
@@ -24,6 +24,7 @@ export default function Example() {
   const [caption, setCaption] = useState();
   const [location_lat, setLocation_lat] = useState();
   const [location_long, setLocation_long] = useState();
+  const [showAlert, setShowAlert] = useState(false);
   const refLat = useRef();
   const refLng = useRef();
 
@@ -49,7 +50,7 @@ export default function Example() {
     fetch("http://localhost:3030/posting", {
       method: "POST",
       body: JSON.stringify({
-        member_id: 1,
+        member_id: localStorage.getItem("member_id"),
         caption,
         location_long,
         location_lat,
@@ -61,8 +62,20 @@ export default function Example() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+      })
+      .then(() => {
+        setShowAlert(true);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
+  }, [showAlert]);
 
   return (
     <div
@@ -88,7 +101,7 @@ export default function Example() {
                     Type
                   </label>
                   <div className="mt-2  ">
-                    <div className=" flex w-96 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                    <div className=" flex w-96 rounded-md  ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                       <select
                         name="post-type"
                         className="block rounded-md flex-1 border-1 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
@@ -114,7 +127,7 @@ export default function Example() {
                       id="caption"
                       name="caption"
                       rows={3}
-                      className="block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md  py-1.5 text-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       defaultValue={""}
                       onChange={(e) => setCaption(e.target.value)}
                     />
@@ -162,7 +175,12 @@ export default function Example() {
             </div>
           </div>
           <div className="flex justify-center mt-4">
-          <button className="bg-green-300 hover:bg-gray-100 text-neutral-900 font-semibold py-2 px-4 border border-gray-400 rounded " type="submit">Add Photo</button>
+            <button
+              className="bg-green-300 hover:bg-gray-100 text-neutral-900 font-semibold py-2 px-4 border border-gray-400 rounded "
+              type="submit"
+            >
+              Add Photo
+            </button>
           </div>
         </form>
         <div>
@@ -194,6 +212,25 @@ export default function Example() {
           >
             Submit
           </button>
+          {showAlert && (
+          <div className="alert alert-success">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current flex-shrink-0 h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Your purchase has been confirmed!</span>
+            </div>
+          </div>)}
         </div>
       </div>
     </div>
