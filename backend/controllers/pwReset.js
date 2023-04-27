@@ -19,7 +19,7 @@ const sendEmail = async () => {
       from: "juan.gamez.cs@gmail.com <juan.gamez.cs@gmail.com>",
       to: userEmail,
       subject: "Reset your password",
-      html: '<a href="http://localhost:3000/changepw">Click this totally not suspicious link to reset your password!</a>',
+      html: '<a href="http://localhost:3000/reset-password">Click this totally not suspicious link to reset your password!</a>',
     });
     //console.log(email);
     console.log("Email sent sucessfully");
