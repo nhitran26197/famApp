@@ -1,8 +1,6 @@
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
-
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
-
 import Map from "./mapPicker";
 
 async function postImage({ image }) {
@@ -215,13 +213,15 @@ export default function Example() {
             Get Location
           </button>
 
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-9 rounded mt-4"
-            onClick={submitPost}
-          >
-            Submit
-          </button>
+          <div className="items-center">
+            <button
+              onClick={submitPost}
+              type="submit"
+              className="rounded-md bg-lime-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-lime-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-700 "
+            >
+              Submit
+            </button>
+          </div>
           {showAlert && (
             <div
               className="alert alert-success"

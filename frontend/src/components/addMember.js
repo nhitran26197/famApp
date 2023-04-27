@@ -268,13 +268,15 @@ export default function AddMember() {
         </form>
       </div>
       <div className="mt-6 flex items-center justify-end gap-x-6">
-        <button
-          type="submit"
-          onClick={submitAddMember}
-          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
-          Submit
-        </button>
+        <div className="items-center">
+          <button
+            onClick={submitAddMember}
+            type="submit"
+            className="rounded-md bg-lime-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-lime-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-700 "
+          >
+            Submit
+          </button>
+        </div>
         {showAlert && (
           <div className="alert alert-success">
             <div>
@@ -291,7 +293,7 @@ export default function AddMember() {
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span>Your post has been added</span>
+              <span>New member added!</span>
             </div>
           </div>
         )}
