@@ -41,10 +41,10 @@ export default function Profile() {
           rel="stylesheet"
           href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
         />
-        {/* <link
+        <link
           rel="stylesheet"
           href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
-        /> */}
+        />
         <div>
           <section class="relative block h-500-px profile-header">
             <div class="absolute top-0 w-full h-full bg-center bg-cover">
