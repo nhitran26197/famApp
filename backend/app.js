@@ -102,7 +102,7 @@ app.post("/images", upload.single("image"), async (req, res) => {
   res.send(result.Location);
 });
 
-const PORT = 3030;
+const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`listening to port${PORT}`);
 });
