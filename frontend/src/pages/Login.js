@@ -11,6 +11,12 @@ const Login = () => {
     navigate("/dashboard");
   };
 
+  const routeToWebLogin = (e) => {
+    e.preventDefault();
+
+    navigate("/facerec");
+  };
+
   const [user, setUser] = useState(null);
 
   function handleCallbackResponse(response) {
@@ -79,6 +85,7 @@ const Login = () => {
               </Link>
             </label>
             <button type="submit">Login</button>
+            <button type="submit" onClick={(e) => routeToWebLogin(e)}>Login through Webcam</button>
             <div id="signInDiv"></div>
             {user && (
               <div>
@@ -100,7 +107,7 @@ const Login = () => {
       <div>
         <div>
           <div className={styles.form}>
-            <h1 className={styles.h1}>Welcome to fam.ily!</h1>
+            <h1 className={styles.h1}>Welcome back!</h1>
           </div>
         </div>
         <img

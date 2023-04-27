@@ -14,6 +14,7 @@ import Forgot from "./pages/ResetPage";
 import Eventpage from "./pages/Eventpage";
 import Travelpage from "./pages/Travelpage";
 import Setting from "./pages/Setting";
+import Facerec from "./pages/facerec";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -31,8 +32,9 @@ root.render(
         <Route path="/feedpage" element={<Feedpage />} />
         <Route path="/bucket" element={<BucketList />} />
         <Route path="/timeline" element={<TimelineDisplay />} />
-        <Route path="/changepw" element={<Forgot />} />
+        <Route path="/reset-password" element={<Forgot />} />
         <Route path="/setting" element={<Setting />} />
+        <Route path="/facerec" element={<Facerec />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
