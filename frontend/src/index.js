@@ -31,7 +31,7 @@ root.render(
         <Route path="/feedpage" element={<Feedpage />} />
         <Route path="/bucket" element={<BucketList />} />
         <Route path="/timeline" element={<TimelineDisplay />} />
-        <Route path="/reset-password" element={<Forgot />} />
+        <Route path="/changepw" element={<Forgot />} />
         <Route path="/setting" element={<Setting />} />
       </Routes>
     </BrowserRouter>

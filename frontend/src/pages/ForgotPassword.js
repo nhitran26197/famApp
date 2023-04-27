@@ -21,6 +21,7 @@ const Forgot = () => {
       .then((res) => {
         if (res.status === 200) {
           alert("Check your email for a link to reset your password!!!!!!");
+          localStorage.setItem("email", email);
         }
       })
       .catch((err) => {
