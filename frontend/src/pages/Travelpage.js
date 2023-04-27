@@ -116,7 +116,7 @@ function Travelpage() {
                         <h3 class="text-xl ml-4 mt-1 font-semibold text-gray-900 ">
                           Add Post
                         </h3>
-                        <button
+                        {/* <button
                           type="button"
                           class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
                           data-modal-hide="defaultModal"
@@ -135,7 +135,7 @@ function Travelpage() {
                             ></path>
                           </svg>
                           <span class="sr-only">Close modal</span>
-                        </button>
+                        </button> */}
                       </div>
                       <AddPost />
                       <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
@@ -155,7 +155,7 @@ function Travelpage() {
             </Dialog>
           </Transition.Root>
         </div>
-        <div>
+        <div style={{ marginTop: "20px" }}>
           <Wrapper
             apiKey={"AIzaSyCecWQ01w2hL3sX2XNdjBVsL0KA9Yln4Hs"}
             version={["beta"]}

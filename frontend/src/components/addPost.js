@@ -223,10 +223,7 @@ export default function Example() {
             </button>
           </div>
           {showAlert && (
-            <div
-              className="alert alert-success"
-              style={{ position: "fixed", bottom: "20px" }}
-            >
+            <div className="alert alert-success">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

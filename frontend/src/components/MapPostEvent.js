@@ -97,7 +97,11 @@ export function MapComponent() {
 
   return (
     <div
-      style={{ width: "800px", height: "900px", borderRadius: "20px" }}
+      style={{
+        width: "800px",
+        height: "900px",
+        borderRadius: "20px",
+      }}
       ref={ref}
       id="map"
     >
