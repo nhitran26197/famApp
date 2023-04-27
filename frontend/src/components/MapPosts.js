@@ -37,7 +37,6 @@ function MapPosts({ map }) {
     })
       .then((response) => response.json())
       .then((data) => {
-
         return JSON.stringify(data);
       })
       .then((res) => {
@@ -48,7 +47,6 @@ function MapPosts({ map }) {
         console.error("Error:", error);
       });
   }, []);
-
 
   return (
     <div>
@@ -85,7 +83,7 @@ export function MapComponent() {
     setMap(
       new window.google.maps.Map(ref.current, {
         center: { lat: 41.49167630796415, lng: -77.00349221838519 },
-        zoom: 6,
+        zoom: 7,
         mapId: "9e8e8fc3da43a2e0",
       })
     );
